@@ -1,5 +1,10 @@
 package br.com.equipef5.bookstore.model;
 
+/**
+ * 
+ * @author ifpe
+ *
+ */
 public class modelAluno {
 
 	//Atributos
