@@ -5,15 +5,16 @@ package br.com.equipef5.bookstore.model;
  * @author ifpe
  *
  */
-public class modelAluno {
+public class Aluno {
 
 	//Atributos
 	private int id;
 	private String nome;
+	private String cpf;
 	private String telefone;
 	private String email;
 	private String matricula;
-	private String imagem;
+	
 	
 	// Métodos
 	public int getId() {
@@ -27,6 +28,14 @@ public class modelAluno {
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	
+	public String getCpf() {
+		return cpf;
+	}
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 	public String getTelefone() {
 		return telefone;
@@ -46,11 +55,6 @@ public class modelAluno {
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
-	public String getImagem() {
-		return imagem;
-	}
-	public void setImagem(String imagem) {
-		this.imagem = imagem;
-	}
+
 	
 }
