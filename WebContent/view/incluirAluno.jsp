@@ -7,7 +7,9 @@
 <title>Cadastro de Aluno</title>
 </head>
 <body>
-
+    
+    <div style= "background-color:#D3D3D3">  <img src="WebContent/view/imagens/log_IFPE.PNG"  > </div>
+    
 <form action="incluirAluno" method="post">
 
   <div align = "center">

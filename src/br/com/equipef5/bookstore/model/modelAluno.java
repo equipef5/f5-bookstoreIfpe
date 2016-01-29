@@ -5,7 +5,7 @@ package br.com.equipef5.bookstore.model;
  * @author ifpe
  *
  */
-public class Aluno {
+public class modelAluno {
 
 	//Atributos
 	private int id;
