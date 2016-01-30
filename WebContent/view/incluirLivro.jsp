@@ -10,7 +10,7 @@
 
    <div style= "background-color:#D3D3D3"> <img src="WebContent/view/imagens/log_IFPE.PNG"> </div>
     
-<form action="incluirLivro" method="post">
+<form action="incluirLivro" method="post" enctype="multipart/form-data">
 
   <div align = "center">
 
@@ -35,7 +35,7 @@
 	  <input type = "text" name = "imagem" size="50"> <br> <br>
 	  
 	  <b> Imagem: </b> <br>
-	  <input type = "text" name = "imagem" size="50"> <br> <br>
+	  <input type = "file" name = "file" size="50"> <br> <br>
 	  
 	 
 	  <p>
