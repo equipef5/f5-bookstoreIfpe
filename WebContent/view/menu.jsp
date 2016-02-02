@@ -4,7 +4,7 @@
 <html>
 <head>
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="view/js"></script>
 <script src="js/bootstrap.min.js"></script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
