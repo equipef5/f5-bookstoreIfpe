@@ -15,6 +15,15 @@ import java.util.Calendar;
 
 @Controller
 public class BibliotecaController {
+	@RequestMapping("/exibirLogin")
+	public String exibirLogin() {
+	return "login";
+	}
+	@RequestMapping("/exibirMenu")
+public String exibirMenu() {
+return "menu";
+}
+
 	@RequestMapping("/exibirCadastrarAluno")
 	public String exibirCadastrarAluno() {
 	return "incluirAluno";
