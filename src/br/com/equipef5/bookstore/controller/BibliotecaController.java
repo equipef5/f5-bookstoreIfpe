@@ -1,6 +1,7 @@
 package br.com.equipef5.bookstore.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,35 +13,37 @@ import br.com.equipef5.bookstore.model.modelLivro;
 import br.com.equipef5.bookstore.util.Util;
 
 import java.util.Calendar;
+import java.util.List;
 
 @Controller
 public class BibliotecaController {
 	@RequestMapping("/exibirLogin")
 	public String exibirLogin() {
 	return "login";
-	}
-	@RequestMapping("/exibirMenu")
-public String exibirMenu() {
-return "menu";
+}
+	
+    @RequestMapping("/exibirMenu")
+    public String exibirMenu() {
+    return "menu";
 }
 
 	@RequestMapping("/exibirCadastrarAluno")
 	public String exibirCadastrarAluno() {
 	return "incluirAluno";
-	}
+}
 
 	@RequestMapping("incluirAluno")
 	
-	public String incluirAluno(modelAluno aluno) {
+	public String incluirAluno(modelAluno modelAluno) {
 	AlunoDao dao = new AlunoDao();
-	dao.salvar(aluno);
+	dao.salvar(modelAluno);
 	return null ;
-	}
+}
 	
 	@RequestMapping("/exibirCadastrarLivro")
 	public String exibirCadastrarLivro() {
 	return "incluirLivro";
-	}
+}
 
 	@RequestMapping("incluirLivro")
 	
@@ -51,5 +54,21 @@ return "menu";
 	LivroDao dao = new LivroDao();
 	dao.salvar(livro);
 	return null ;
+}
+	
+	@RequestMapping("/exibirGerenciarAluno")
+	public String exibirGerenciarAluno(Model model) {
+		  AlunoDao dao = new AlunoDao();
+		  List<modelAluno> listarAlunos = dao.listar();
+		  model.addAttribute("listarAlunos", listarAlunos);
+		 return "gerenciarAluno";
 	}
-	}
+
+@RequestMapping("/pesquisarAluno")
+public String PesquisarAluno(Model model, String cpf) {
+	  AlunoDao dao = new AlunoDao();
+	  List<modelAluno> listarAlunos = dao.pesquisarAluno(cpf);
+	  model.addAttribute("listarAlunos", listarAlunos);
+	 return "gerenciarAluno";
+}
+}

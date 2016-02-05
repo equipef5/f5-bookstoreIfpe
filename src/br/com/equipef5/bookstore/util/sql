@@ -6,25 +6,23 @@ create DATABASE  biblioteca;
  );
 
   INSERT INTO LoginADM  ( login, senha)  
-   VALUES ('Bonifácio Muniz',  
+   VALUES ('Bonifï¿½cio Muniz',  
    MD5('adminIF2016'));
 
-create TABLE  Livros (
+create TABLE  livros (
     id INT NOT NULL  AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(50) NOT NULL,  
     autor VARCHAR(50) NOT NULL,
     editora VARCHAR(50) NOT NULL,
     ano VARCHAR (6) NOT NULL, 
-    quantidade int NOT NULL,
-   imagem VARCHAR(50) NOT NULL
+    quantidade (50) NOT NULL
  ); 
 
-create TABLE   Alunos (
+create TABLE  alunos (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(50) NOT NULL,  
     cpf VARCHAR(14) NOT NULL  ,
     telefone VARCHAR(9) NOT NULL,
     email VARCHAR (6) NOT NULL,  
-    matricula VARCHAR(14) NOT NULL,
-   imagem varchar (100) NOT NULL
+    matricula VARCHAR(14) NOT NULL
  );

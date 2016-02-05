@@ -3,9 +3,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<link href="view/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="view/css/buscar.css" rel="stylesheet" media="screen">
+<script src="view/js/jquery-latest.js"></script>
+<script src="view/js/bootstrap.min.js"></script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Cadastro de Aluno</title>
@@ -17,63 +18,74 @@
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<img class="img-responsive " align="left"
-				src="imagens/IFPE_imagem.png" style="width: 380; height: 105px;">
+				src="view/imagens/IFPE_imagem.png"
+				style="width: 380; height: 105px;">
 			<h3 align="right"
 				style="font-family: arial black; font-size: x-larger;">BOOKSTORE
 			</h3>
-			</br>
+			<br />
 		</div>
 
 	</div>
 	</nav>
-<!-- end  -->
-        <!-- menu  -->
+	<!-- end  -->
+	<!-- menu  -->
 	<div align="left">
-	<div class="col-md-3 column margintop20">
-		<ul class="nav nav-pills nav-stacked">
-			
-			<li class="active"><a href="#"><span class="glyphicon glyphicon-chevron-right"></span>Biblioteca</a></li>
-			
-			<li><a href="incluirLivro.jsp"><span class="glyphicon glyphicon-chevron-right"></span>Cadastrar livro</a></li>
-			
-			<li><a href="incluirAluno.jsp" class="active2"><span class="glyphicon glyphicon-chevron-right"></span>Cadastrar aluno</a></li>
-			
-			<li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span> Buscar livro</a></li>
-			
-			<li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span>Buscar aluno</a></li>
+		<div class="col-md-3 column margintop20">
+			<ul class="nav nav-pills nav-stacked">
 
-		</ul>
+				<li class="active"><a href="#"><span
+						class="glyphicon glyphicon-chevron-right"></span>Biblioteca</a></li>
+
+				<li><a href=""><span
+						class="glyphicon glyphicon-chevron-right"></span>Cadastrar livro</a></li>
+
+				<li><a href="exibirCadastrarAluno" class="active2"><span
+						class="glyphicon glyphicon-chevron-right"></span>Cadastrar aluno</a></li>
+
+				<li><a href="#"><span
+						class="glyphicon glyphicon-chevron-right"></span>Gerenciar livro</a></li>
+
+				<li><a href="exibirGerenciarAluno"><span
+						class="glyphicon glyphicon-chevron-right"></span>Gerenciar aluno</a></li>
+
+			</ul>
+		</div>
 	</div>
-	</div>
-<!-- end  -->
+	<!-- end  -->
 
 	<!--Form -->
-	
-	<div align="center">
-	<div class="container">
-		<h2>Cadastro de aluno</h2>
-		<form role="form" action="incluirAluno" method="post">
+
+	<div align="center" style="margin-left: 20px">
+		<div class="container">
 			<div class="form-group">
-
-            <b> Nome completo: </b> <br> <input type="text" name="nome"size="50px" placeholder="Nome"> <br> <br> <b>
-			    CPF: </b> <br> <input type="text" name="cpf" size="50"   placeholder="Cpf"> <br> <br> <b>
- &nbsp; &nbsp; Telefone: </b> <br> <input type="text" name="telefone" size="50" placeholder="Telefone"> <br> <br> <b> 
-				E-mail:</b> <br> <input type="text" name="email" size="50"placeholder="E-mail"> <br> <br> <b>
-				Matrícula: </b> <br> <input type="text" name="matricula" size="50"placeholder="Matrícula">
-				<br> <br>
+				<h2>Cadastro de aluno</h2>
+				<form action="incluirAluno" method="post">
 
 
-				<p>
-				 <a href="#" onclick="alert('Aluno Cadastrado!')"  class="btn btn-primary btn-default"><span class="glyphicon glyphicon-user"></span> Cadastrar</a>
-    
-				 
-						 &nbsp; &nbsp; <a href="menu.jsp"   class="btn btn-primary btn-default"><span class="glyphicon glyphicon-arrow-right"></span> Sair</a>				</p>
+				<b> Nome Completo: </b> <br> <input type="text" name="nome" size="50px" placeholder="Nome Completo"> <br> <br> <b>
+				    Cpf: </b> <br> <input type="text" name="cpf" size="50" placeholder="Cpf"> <br> <br> <b> &nbsp; &nbsp;
+                    Telefone: </b> <br> <input type="text" name="telefone" size="50" class="input2"  placeholder="Telefone"> <br><br> <b> &nbsp; &nbsp;
+                  <font style="margin-left:20% "> E-mail:</font></b> <br> <input type="text" name="email" size="50"  class="input2" placeholder="E-mail"><br> <br> <b>
+	             <font style="margin-left:24% "> Matrícula:</font></b> <br> <input type="text" name="matricula" size="50" class="input2" style="" placeholder="Matrícula"> <br> <br>
+
+
+					<p>
+						<br />&nbsp; &nbsp; &nbsp;&nbsp;
+						<button type="submit" class="btn btn-primary"
+							onclick="alert('Aluno Cadastrado!')">
+							<span class="glyphicon glyphicon-user"></span> Cadastrar
+						</button>
+						&nbsp; &nbsp;&nbsp;
+						<button type="submit" class="btn btn-primary">
+							<span class="glyphicon glyphicon-arrow-right"></span> Sair
+						</button>
+				</form>
 
 			</div>
-		</form>
+		</div>
 	</div>
-	</div>
-<!-- end  -->
+	<!-- end  -->
 	<br>
 	<br>
 	<br>
@@ -81,9 +93,7 @@
 	<br>
 	<br>
 	<br>
-	<br>
-	<br>
-	<br>
+
 
 	<div align="center">BookstoreIfpe por EquipeF5</div>
 </body>

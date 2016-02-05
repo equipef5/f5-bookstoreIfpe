@@ -33,10 +33,13 @@ public class LivroDao {
 	
 
 	 stmt.execute();
-	    connection.close();
+	  
 	} catch (SQLException e) {
 	    throw new RuntimeException(e);
 	}
+	
  }
-
+	public void close() throws SQLException{
+		connection.close();
+	}
 }

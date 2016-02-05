@@ -3,9 +3,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<link href="view/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<script src="view/js/jquery-latest.js"></script>
+<script src="view/js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
@@ -14,10 +14,8 @@
 	<nav class="navbar navbar-default"> <br />
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<img class="img-responsive " align="left" src="imagens/IFPE_imagem.png" style="width: 380; height: 105px;">
-			<h3 align="right" style="font-family: arial black; font-size: x-larger;">BOOKSTORE
-			
-			</h3>
+			<img class="img-responsive " align="left" src="view/imagens/IFPE_imagem.png" style="width: 380; height: 105px;">
+			<h3 align="right" style="font-family: arial black; font-size: x-larger;">BOOKSTORE</h3>
 			
 			<br />
 		
@@ -34,13 +32,13 @@
 			
 			<li class="active"><a href="#"><span class="glyphicon glyphicon-chevron-right"></span>Biblioteca</a></li>
 			
-			<li><a href="incluirLivro.jsp"><span class="glyphicon glyphicon-chevron-right"></span>Cadastrar livro</a></li>
+			<li><a href="exibirCadastrarLivro"><span class="glyphicon glyphicon-chevron-right"></span>Cadastrar livro</a></li>
 			
-			<li><a href="incluirAluno.jsp" class="active2"><span class="glyphicon glyphicon-chevron-right"></span>Cadastrar aluno</a></li>
+			<li><a href="exibirCadastrarAluno" class="active2"><span class="glyphicon glyphicon-chevron-right"></span>Cadastrar aluno</a></li>
 			
-			<li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span> Buscar livro</a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span> Gerenciar livro</a></li>
 			
-			<li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span>Buscar aluno</a></li>
+			<li><a href="exibirGerenciarAluno"><span class="glyphicon glyphicon-chevron-right"></span>Gerenciar aluno</a></li>
 
 		</ul>
 	</div>
