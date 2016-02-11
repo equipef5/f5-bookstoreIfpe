@@ -41,30 +41,7 @@ public class AlunoDao {
 	} catch (SQLException e) {
 	    throw new RuntimeException(e);
 	}}
-	public List<modelAluno> pesquisarAluno(String cpf) {
-
-		try {
-		    List<modelAluno> listaContato = new ArrayList<modelAluno>();
-
-		    java.sql.PreparedStatement stmt = this.connection.prepareStatement("SELECT * FROM alunos WHERE cpf like ? ORDER BY id");
-		    stmt.setString(1, "%" + cpf + "%");
-		   
-
-		    ResultSet rs = stmt.executeQuery();
-
-		    while (rs.next()) {
-			listaContato.add(montarObjeto(rs));
-		    }
-
-		    rs.close();
-		    stmt.close();
-		   
-
-		    return listaContato;
-		} catch (SQLException e) {
-		    throw new RuntimeException(e);
-		}
-	    }
+	
 	public List<modelAluno>listar() {
 
     	try {
@@ -105,7 +82,22 @@ public class AlunoDao {
 		} catch (SQLException e) {
 		    throw new RuntimeException(e);
 		}
-	}
+    }
+	public void remover(modelAluno aluno) {
+
+		try {
+		    PreparedStatement stmt = (PreparedStatement) connection.prepareStatement("DELETE FROM alunos WHERE id = ?");
+		    stmt.setLong(1, aluno.getId());
+		    stmt.execute();
+		    stmt.close();
+		    
+		} catch (SQLException e) {
+		    throw new RuntimeException(e);
+		}
+	    }
+	
+
+	
 		private modelAluno montarObjeto(ResultSet rs) throws SQLException {
 
 			 modelAluno modelAluno = new modelAluno();
@@ -124,6 +116,7 @@ public class AlunoDao {
 		public void close() throws SQLException{
 			connection.close();
 		}
+		
 
 }
 

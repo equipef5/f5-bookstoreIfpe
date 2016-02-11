@@ -10,6 +10,7 @@
 <script src="view/js/jquery-latest.js"></script>
 <script src="view/js/bootstrap.min.js"></script>
 <script src="view/js/jquery.min.js"></script>
+<script src="view/js/table.js"></script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
@@ -65,34 +66,39 @@
 		<input type="submit" value="pesquisar" />
 	</form>
 	<!-- end -->
+	
 	<!-- table List -->
-	<div style="margin-left: 25%;">
 <div class="container">
 	<div class="row">
-		
-        
-        <div class="col-md-12">
-        <h4>Lista de Alunos</h4>
-        <div class="table-responsive">
-
-                
-              <table id="mytable" class="table table-bordred table-striped">
-                   
-                   <thead>
-                   
-                 
+        <div class="col-md-3">
+          <div align="right">  <form action="#" method="get">
+                <div class="input-group">
+                    <input class="form-control" id="system-search" name="q" placeholder="Search for" required>
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+                    </span>
+                </div>
+            </form></div>
+        </div>
+		<div class="col-md-9">
+    	 <table class="table table-list-search">
+            <thead>
+             <tr>
                    <th>Codigo</th>
                    <th>Nome</th>
                    <th>Cpf</th>
                    <th>Telefone</th>
+         
                    <th>E-mail</th>
                    <th>Matricula</th>
                       
                    <th>Editar</th>
                    <th>Deletar</th>
-                   </thead>
-  
-    <c:forEach var="aluno" items="${listarAlunos}">
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach var="aluno" items="${listarAlunos}">
     <tr>
     
     <td>${aluno.id}</td>
@@ -105,16 +111,11 @@
     <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
     </tr>
     </c:forEach>
-       </tbody>
-        
-</table>
+                    </tbody>
+                </table>   
+		</div>
+	</div>
 </div>
-</div>
-</div>
-</div>
-
-</div>
-
 	<!-- end -->
 </body>
 </html>

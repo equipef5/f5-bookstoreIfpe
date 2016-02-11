@@ -61,22 +61,24 @@
 	  <input type = "text" name = "editora" size="50" placeholder="Editora"> <br> <br>
 	  
 	  <b> Ano de Lançamento:</b> <br>
-	  <input type = "text" name = "ano" size="50" placeholder="Ano de Lançamento"> <br> <br>
+	  <input type = "text" name = "ano" size="50" placeholder="Ano de Lançamento" class="input2"> <br> <br>
 	  
 	  <b> Quantidade de Livros: </b> <br>
-	  <input type = "text" name = "imagem" size="50" placeholder="Quantidade"> <br> <br>
+	  <input type = "text" name = "imagem" size="50" placeholder="Quantidade" class="input2"> <br> <br>
 	  
 	  <b> Imagem: </b> <br>
-	  <input type = "file" name = "file" size="50" placeholder="Imagem"> <br> <br>
+	  <input type = "file" name = "file" size="50" placeholder="Imagem" class="input2"> <br> <br>
 	  
-	 
 	 <p>
-				 <a href="#" onclick="alert('Livro Cadastrado!')"  class="btn btn-primary btn-default"><span class="glyphicon glyphicon-book"></span> Cadastrar</a>
-    
-				 
-						 &nbsp; &nbsp; <a href="menu.jsp"   class="btn btn-primary btn-default"><span class="glyphicon glyphicon-arrow-right"></span> Sair</a>				</p>
-
-			</div>
+						<br />&nbsp; &nbsp; &nbsp;&nbsp;
+						<button type="submit" class="btn btn-primary button2"
+							onclick="alert('Aluno Cadastrado!')">
+							<span class="glyphicon glyphicon-user"></span> Cadastrar
+						</button>
+						&nbsp; &nbsp;&nbsp;
+						<button type="submit" class="btn btn-primary">
+							<span class="glyphicon glyphicon-arrow-right"></span> Sair
+						</button>
 		</form>
 	</div>
 	</div>

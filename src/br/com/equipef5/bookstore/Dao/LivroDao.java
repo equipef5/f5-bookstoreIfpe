@@ -1,9 +1,11 @@
 package br.com.equipef5.bookstore.Dao;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
+
 
 import br.com.equipef5.bookstore.model.modelLivro;
 import br.com.equipef5.bookstore.util.ConnectionFactory;
@@ -36,9 +38,46 @@ public class LivroDao {
 	  
 	} catch (SQLException e) {
 	    throw new RuntimeException(e);
+	}}
+	public modelLivro buscar(String titulo) {
+
+		try {
+		    java.sql.PreparedStatement stmt = connection.prepareStatement("SELECT * FROM livros WHERE titulo = ?");
+		    stmt.setString(0, titulo);
+		    ResultSet rs = stmt.executeQuery();
+
+		    modelLivro modelLivro = null;
+		    if (rs.next()) {
+		    	modelLivro = montarObjeto(rs);
+		    }
+
+		    rs.close();
+		    stmt.close();
+		    
+		    return modelLivro;
+		} catch (SQLException e) {
+		    throw new RuntimeException(e);
+		}
 	}
+
+ 
 	
- }
+	private modelLivro montarObjeto(ResultSet rs) throws SQLException {
+
+		 modelLivro modelLivro = new modelLivro();
+		 modelLivro.setId(rs.getInt("id"));
+		 modelLivro.setTitulo(rs.getString("titulo"));
+		 modelLivro.setAutor(rs.getString("autor"));
+		 modelLivro.setEditora(rs.getString("editora"));
+		 modelLivro.setAno(rs.getString("ano"));
+		 modelLivro.setImagem(rs.getString("imagema"));
+		
+		 
+			return modelLivro;
+		   
+			   
+			
+		    }
 	public void close() throws SQLException{
 		connection.close();
 	}

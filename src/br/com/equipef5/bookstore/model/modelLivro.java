@@ -2,13 +2,20 @@ package br.com.equipef5.bookstore.model;
 
 public class modelLivro {
 	//Atributos
-	
+	private int id;
 	private String titulo;
 	private String autor;
 	private String editora;
 	private String ano;
 	private int quantidade;
 	private String imagem;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 	public String getTitulo() {
 		return titulo;

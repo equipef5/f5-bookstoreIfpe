@@ -66,13 +66,13 @@
 				<b> Nome Completo: </b> <br> <input type="text" name="nome" size="50px" placeholder="Nome Completo"> <br> <br> <b>
 				    Cpf: </b> <br> <input type="text" name="cpf" size="50" placeholder="Cpf"> <br> <br> <b> &nbsp; &nbsp;
                     Telefone: </b> <br> <input type="text" name="telefone" size="50" class="input2"  placeholder="Telefone"> <br><br> <b> &nbsp; &nbsp;
-                  <font style="margin-left:20% "> E-mail:</font></b> <br> <input type="text" name="email" size="50"  class="input2" placeholder="E-mail"><br> <br> <b>
+                  <font style="margin-left:20% "> E-mail:</font></b> <br> <input type="text" name="email" size="50"  class="input2 " placeholder="E-mail"><br> <br> <b>
 	             <font style="margin-left:24% "> Matrícula:</font></b> <br> <input type="text" name="matricula" size="50" class="input2" style="" placeholder="Matrícula"> <br> <br>
 
 
 					<p>
 						<br />&nbsp; &nbsp; &nbsp;&nbsp;
-						<button type="submit" class="btn btn-primary"
+						<button type="submit" class="btn btn-primary button2"
 							onclick="alert('Aluno Cadastrado!')">
 							<span class="glyphicon glyphicon-user"></span> Cadastrar
 						</button>

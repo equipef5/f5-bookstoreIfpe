@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import br.com.equipef5.bookstore.Dao.AdmDao;
 import br.com.equipef5.bookstore.Dao.AlunoDao;
 import br.com.equipef5.bookstore.Dao.LivroDao;
 import br.com.equipef5.bookstore.model.modelAluno;
@@ -15,12 +16,24 @@ import br.com.equipef5.bookstore.util.Util;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class BibliotecaController {
 	@RequestMapping("/exibirLogin")
 	public String exibirLogin() {
-	return "login";
+	return "index";
 }
+	@RequestMapping("validarLogin")
+	public String validarAdm(AdmDao adm, HttpSession session,String login,String senha) {
+		AdmDao dao=new AdmDao();
+	  if(new AdmDao().ValidarAdm(login, senha)) {
+	    session.setAttribute("login", adm);
+	    return "menu";
+	  }
+	  return "redirect:exibirLogin";
+	}
+   
 	
     @RequestMapping("/exibirMenu")
     public String exibirMenu() {
@@ -64,11 +77,11 @@ public class BibliotecaController {
 		 return "gerenciarAluno";
 	}
 
-@RequestMapping("/pesquisarAluno")
-public String PesquisarAluno(Model model, String cpf) {
+     @RequestMapping("/pesquisarAluno")
+     public String PesquisarAluno(Model model, String cpf) {
 	  AlunoDao dao = new AlunoDao();
-	  List<modelAluno> listarAlunos = dao.pesquisarAluno(cpf);
+	  modelAluno listarAlunos = dao.buscar(cpf);
 	  model.addAttribute("listarAlunos", listarAlunos);
-	 return "gerenciarAluno";
+	   return "gerenciarAluno";
 }
 }

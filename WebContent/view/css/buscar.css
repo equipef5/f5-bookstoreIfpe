@@ -36,6 +36,13 @@
         z-index: 3;   
     }
     .input2{
-    margin-left: 22%;
+    margin-left: 15%;
     }
+    .button2{
+      margin-left: 20%;
+    
+    }
+    body {
+    margin-top: 2%
+}
 }

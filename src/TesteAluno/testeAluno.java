@@ -16,7 +16,7 @@ import br.com.equipef5.bookstore.model.modelAluno;
 public class testeAluno {
 
 	@Test
-	public void guardarInformaçoes() throws Exception {
+	public void guardarInformacoes() throws Exception {
 		AlunoDao dao = new AlunoDao();
 		modelAluno modelAluno = new modelAluno();
 		modelAluno modelAlunoPesquisa = new modelAluno();

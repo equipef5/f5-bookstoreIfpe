@@ -55,6 +55,8 @@ public class modelAluno {
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
+	
+	
 
 	
 }
