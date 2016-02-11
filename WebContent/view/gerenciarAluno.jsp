@@ -61,21 +61,19 @@
 	<!-- end -->
 
 	<!-- Imput Search -->
-	<form action='pesquisarAluno'>
-		Cpf: <input type="text" name="cpf" /> 
+	<!-- <form action='pesquisarAluno'> 
+		<!-- Cpf: <input type="text" name="cpf" /> 
 		<input type="submit" value="pesquisar" />
-	</form>
+	</form>-->
 	<!-- end -->
 	
 	<!-- table List -->
 <div class="container">
 	<div class="row">
         <div class="col-md-3">
-          <div align="right">  <form action="#" method="get">
+          <div style="margin-left: 490px">  <form action="pesquisarAluno" method="post">
                 <div class="input-group">
-                    <input class="form-control" id="system-search" name="q" placeholder="Search for" required>
-                    <span class="input-group-btn">
-                        <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+                    <input  id="system-search" name="q" placeholder="Search for" required><span class="input-group-btn"><button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
                     </span>
                 </div>
             </form></div>
