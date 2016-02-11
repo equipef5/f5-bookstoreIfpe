@@ -2,10 +2,11 @@ package br.com.equipef5.bookstore.Dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
-
 
 import br.com.equipef5.bookstore.model.modelLivro;
 import br.com.equipef5.bookstore.util.ConnectionFactory;
@@ -61,8 +62,32 @@ public class LivroDao {
 	}
 
  
-	
-	private modelLivro montarObjeto(ResultSet rs) throws SQLException {
+
+	 public List<modelLivro> listar() {
+
+			try {
+
+			    List<modelLivro> listarLivros = new ArrayList<modelLivro>();
+			    PreparedStatement stmt = (PreparedStatement) this.connection.prepareStatement("SELECT * FROM livros ORDER BY id");
+
+			    ResultSet rs = stmt.executeQuery();
+
+			    while (rs.next()) {
+				listarLivros.add(montarObjeto(rs));
+			    }
+
+			    rs.close();
+			    stmt.close();
+			    connection.close();
+
+			    return listarLivros;
+
+			} catch (SQLException e) {
+			    throw new RuntimeException(e);
+			}
+		    }
+
+	 private modelLivro montarObjeto(ResultSet rs) throws SQLException {
 
 		 modelLivro modelLivro = new modelLivro();
 		 modelLivro.setId(rs.getInt("id"));
@@ -70,15 +95,12 @@ public class LivroDao {
 		 modelLivro.setAutor(rs.getString("autor"));
 		 modelLivro.setEditora(rs.getString("editora"));
 		 modelLivro.setAno(rs.getString("ano"));
-		 modelLivro.setImagem(rs.getString("imagema"));
+		 modelLivro.setImagem(rs.getString("imagem"));
 		
 		 
 			return modelLivro;
 		   
-			   
 			
 		    }
-	public void close() throws SQLException{
-		connection.close();
-	}
+		   
 }

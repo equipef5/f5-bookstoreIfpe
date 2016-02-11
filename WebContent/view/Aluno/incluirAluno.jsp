@@ -37,13 +37,13 @@
 				<li class="active"><a href="#"><span
 						class="glyphicon glyphicon-chevron-right"></span>Biblioteca</a></li>
 
-				<li><a href=""><span
+				<li><a href="exibirCadastrarLivro"><span
 						class="glyphicon glyphicon-chevron-right"></span>Cadastrar livro</a></li>
 
 				<li><a href="exibirCadastrarAluno" class="active2"><span
 						class="glyphicon glyphicon-chevron-right"></span>Cadastrar aluno</a></li>
 
-				<li><a href="#"><span
+				<li><a href="exibirGerenciarLivro"><span
 						class="glyphicon glyphicon-chevron-right"></span>Gerenciar livro</a></li>
 
 				<li><a href="exibirGerenciarAluno"><span
@@ -65,9 +65,9 @@
 
 				<b> Nome Completo: </b> <br> <input type="text" name="nome" size="50px" placeholder="Nome Completo"> <br> <br> <b>
 				    Cpf: </b> <br> <input type="text" name="cpf" size="50" placeholder="Cpf"> <br> <br> <b> &nbsp; &nbsp;
-                    Telefone: </b> <br> <input type="text" name="telefone" size="50" class="input2"  placeholder="Telefone"> <br><br> <b> &nbsp; &nbsp;
-                  <font style="margin-left:20% "> E-mail:</font></b> <br> <input type="text" name="email" size="50"  class="input2 " placeholder="E-mail"><br> <br> <b>
-	             <font style="margin-left:24% "> Matrícula:</font></b> <br> <input type="text" name="matricula" size="50" class="input2" style="" placeholder="Matrícula"> <br> <br>
+                    Telefone: </b> <br> <input type="text" name="telefone" size="50" class="input2"  placeholder="Telefone" style="margin-left:20% "> <br><br> <b> &nbsp; &nbsp;
+                  <font> E-mail:</font></b> <br> <input type="text" name="email" size="50"  class="input2 " placeholder="E-mail" style="margin-left:20% "><br> <br> <b>
+	             <font > Matrícula:</font></b> <br> <input type="text" name="matricula" size="50" class="input2" style="" placeholder="Matrícula" style="margin-left:20%" > <br> <br>
 
 
 					<p>

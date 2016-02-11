@@ -1,5 +1,11 @@
 package br.com.equipef5.bookstore.controller;
 
+
+import java.util.Calendar;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,11 +19,6 @@ import br.com.equipef5.bookstore.model.modelAluno;
 import br.com.equipef5.bookstore.model.modelLivro;
 import br.com.equipef5.bookstore.util.Util;
 
-import java.util.Calendar;
-import java.util.List;
-
-import javax.servlet.http.HttpSession;
-
 @Controller
 public class BibliotecaController {
 	@RequestMapping("/exibirLogin")
@@ -26,7 +27,7 @@ public class BibliotecaController {
 }
 	@RequestMapping("validarLogin")
 	public String validarAdm(AdmDao adm, HttpSession session,String login,String senha) {
-		AdmDao dao=new AdmDao();
+		AdmDao dao = new AdmDao();
 	  if(new AdmDao().ValidarAdm(login, senha)) {
 	    session.setAttribute("login", adm);
 	    return "menu";
@@ -42,7 +43,7 @@ public class BibliotecaController {
 
 	@RequestMapping("/exibirCadastrarAluno")
 	public String exibirCadastrarAluno() {
-	return "incluirAluno";
+	return "Aluno/incluirAluno";
 }
 
 	@RequestMapping("incluirAluno")
@@ -50,12 +51,12 @@ public class BibliotecaController {
 	public String incluirAluno(modelAluno modelAluno) {
 	AlunoDao dao = new AlunoDao();
 	dao.salvar(modelAluno);
-	return null ;
+	return "Aluno/incluirAluno" ;
 }
 	
 	@RequestMapping("/exibirCadastrarLivro")
 	public String exibirCadastrarLivro() {
-	return "incluirLivro";
+	return "Livro/incluirLivro";
 }
 
 	@RequestMapping("incluirLivro")
@@ -74,7 +75,7 @@ public class BibliotecaController {
 		  AlunoDao dao = new AlunoDao();
 		  List<modelAluno> listarAlunos = dao.listar();
 		  model.addAttribute("listarAlunos", listarAlunos);
-		 return "gerenciarAluno";
+		 return "Aluno/gerenciarAluno";
 	}
 
      @RequestMapping("/pesquisarAluno")
@@ -82,6 +83,51 @@ public class BibliotecaController {
 	  AlunoDao dao = new AlunoDao();
 	  modelAluno listarAlunos = dao.buscar(cpf);
 	  model.addAttribute("listarAlunos", listarAlunos);
-	   return "gerenciarAluno";
+	   return "Aluno/gerenciarAluno";
 }
+     
+     @RequestMapping("/exibirAlterarAluno")
+     public String exibirAlterarProduto(Model model, modelAluno modelAluno) {
+
+	 	AlunoDao dao = new AlunoDao();
+	 	modelAluno = dao.buscar(modelAluno.getCpf());
+	 	model.addAttribute("modelAluno", modelAluno);
+	
+	 	return "Aluno/alterarAluno";
+     }
+     
+     @RequestMapping("alterarAluno")
+     public String alterarAluno(modelAluno modelAluno, Model model) {
+
+    	 AlunoDao dao = new AlunoDao();
+	 	dao.alterar(modelAluno);
+	 	model.addAttribute("modelAluno", modelAluno);
+	 	
+	 	return "Aluno/alterarAluno";
+     }
+     
+     @RequestMapping("removerAluno")
+     public String removerAluno(modelAluno modelAluno, Model model) {
+
+	 	AlunoDao dao = new AlunoDao();
+	 	dao.remover(modelAluno);
+	 	
+	 	return "Aluno/gerenciarAluno";
+     }
+     
+     @RequestMapping("/exibirGerenciarLivro")
+ 	 public String exibirGerenciarLivro(Model model) {
+ 		  LivroDao dao = new LivroDao();
+ 		  List<modelLivro> listarLivros = dao.listar();
+ 		  model.addAttribute("listarLivros", listarLivros);
+ 		  return "Livro/gerenciarLivro";
+ 	}
+
+      @RequestMapping("/pesquisarLivro")
+      public String PesquisarLivro(Model model, String titulo) {
+	 	  LivroDao dao = new LivroDao();
+	 	  modelLivro listarLivros = dao.buscar(titulo);
+	 	  model.addAttribute("listarLivros", listarLivros);
+	 	  return "Livro/gerenciarLivro";
+ }
 }

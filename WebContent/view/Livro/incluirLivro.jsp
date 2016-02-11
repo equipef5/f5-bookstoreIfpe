@@ -36,7 +36,7 @@
 			
 			<li><a href="exibirCadastrarAluno" class="active2"><span class="glyphicon glyphicon-chevron-right"></span>Cadastrar aluno</a></li>
 			
-			<li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span> Gerenciar livro</a></li>
+			<li><a href="exibirGerenciarLivro"><span class="glyphicon glyphicon-chevron-right"></span> Gerenciar livro</a></li>
 			
 			<li><a href="exibirGerenciarAluno"><span class="glyphicon glyphicon-chevron-right"></span>Gerenciar aluno</a></li>
 
@@ -58,21 +58,21 @@
 	  <input type = "text" name = "autor" size="50" placeholder="Autor"> <br> <br>
 	  
 	  <b> Editora: </b> <br>
-	  <input type = "text" name = "editora" size="50" placeholder="Editora"> <br> <br>
+	  <input type = "text" name = "editora" size="50" placeholder="Editora" style="margin-left:20% "> <br> <br>
 	  
 	  <b> Ano de Lançamento:</b> <br>
-	  <input type = "text" name = "ano" size="50" placeholder="Ano de Lançamento" class="input2"> <br> <br>
+	  <input type = "text" name = "ano" size="50" placeholder="Ano de Lançamento" class="input2" style="margin-left:20% ">  <br> <br>
 	  
 	  <b> Quantidade de Livros: </b> <br>
-	  <input type = "text" name = "imagem" size="50" placeholder="Quantidade" class="input2"> <br> <br>
+	  <input type = "number" name = "imagem" size="50" placeholder="Quantidade" class="input2" style="margin-left:2% "> <br> <br>
 	  
 	  <b> Imagem: </b> <br>
-	  <input type = "file" name = "file" size="50" placeholder="Imagem" class="input2"> <br> <br>
+	  <input type = "file" name = "file" size="50" placeholder="Imagem" class="input2" style="margin-left:13% "> <br> <br>
 	  
 	 <p>
 						<br />&nbsp; &nbsp; &nbsp;&nbsp;
 						<button type="submit" class="btn btn-primary button2"
-							onclick="alert('Aluno Cadastrado!')">
+							onclick="alert('Livro Cadastrado!')">
 							<span class="glyphicon glyphicon-user"></span> Cadastrar
 						</button>
 						&nbsp; &nbsp;&nbsp;

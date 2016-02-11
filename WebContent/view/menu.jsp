@@ -50,7 +50,7 @@
 			
 			<li><a href="exibirCadastrarAluno" class="active2"><span class="glyphicon glyphicon-chevron-right"></span>Cadastrar aluno</a></li>
 			
-			<li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span> Buscar livro</a></li>
+			<li><a href="exibirGerenciarLivro"><span class="glyphicon glyphicon-chevron-right"></span> Gerenciar Livro</a></li>
 			
 			<li><a href="exibirGerenciarAluno"><span class="glyphicon glyphicon-chevron-right"></span>Gerenciar aluno</a></li>
 
@@ -64,7 +64,7 @@
 						<img src="imagens/livros_imagem.jpg" class="img-thumbnail"
 							alt="Cinque Terre" width="50%" height="50%">
 					</div> 
-00000
+
 					</div>
 				
 </body>

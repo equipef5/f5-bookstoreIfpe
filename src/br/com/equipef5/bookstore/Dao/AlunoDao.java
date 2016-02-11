@@ -1,5 +1,6 @@
 package br.com.equipef5.bookstore.Dao;
 
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import com.mysql.jdbc.PreparedStatement;
 
 import br.com.equipef5.bookstore.model.modelAluno;
 import br.com.equipef5.bookstore.util.ConnectionFactory;
+
 
 public class AlunoDao {
 	//Banco
@@ -42,6 +44,40 @@ public class AlunoDao {
 	    throw new RuntimeException(e);
 	}}
 	
+	public void alterar(modelAluno modelAluno) {
+
+		String sql = "UPDATE alunos SET nome = ? , cpf = ? , telefone = ? , email  = ? , matricula = ? WHERE id = ?";
+
+		try {
+
+		    PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
+		    stmt.setString(1, modelAluno.getNome());
+		    stmt.setString(2, modelAluno.getCpf());
+		    stmt.setString(3, modelAluno.getTelefone());
+		    stmt.setString(4, modelAluno.getEmail());
+		    stmt.setString(5, modelAluno.getMatricula());
+		    stmt.setInt(6, modelAluno.getId());
+		    stmt.execute();
+		    stmt.close();
+		    connection.close();
+		} catch (SQLException e) {
+		    throw new RuntimeException(e);
+		}
+	    }
+
+	    public void remover (modelAluno modelAluno) {
+
+		try {
+		    PreparedStatement stmt = (PreparedStatement) connection.prepareStatement("DELETE FROM alunos WHERE id = ?");
+		    stmt.setLong(1, modelAluno.getId());
+		    stmt.execute();
+		    stmt.close();
+		    connection.close();
+		} catch (SQLException e) {
+		    throw new RuntimeException(e);
+		}
+	    }
+
 	public List<modelAluno>listar() {
 
     	try {
@@ -83,30 +119,17 @@ public class AlunoDao {
 		    throw new RuntimeException(e);
 		}
     }
-	public void remover(modelAluno aluno) {
-
-		try {
-		    PreparedStatement stmt = (PreparedStatement) connection.prepareStatement("DELETE FROM alunos WHERE id = ?");
-		    stmt.setLong(1, aluno.getId());
-		    stmt.execute();
-		    stmt.close();
-		    
-		} catch (SQLException e) {
-		    throw new RuntimeException(e);
-		}
-	    }
-	
-
-	
+		
 		private modelAluno montarObjeto(ResultSet rs) throws SQLException {
 
 			 modelAluno modelAluno = new modelAluno();
 			 modelAluno.setId(rs.getInt("id"));
 			 modelAluno.setNome(rs.getString("nome"));
 			 modelAluno.setCpf(rs.getString("cpf"));
+			 modelAluno.setTelefone(rs.getString("telefone"));
 			 modelAluno.setEmail(rs.getString("email"));
 			 modelAluno.setMatricula(rs.getString("matricula"));
-			 modelAluno.setTelefone(rs.getString("telefone"));
+			
 			 
 				return modelAluno;
 			   
