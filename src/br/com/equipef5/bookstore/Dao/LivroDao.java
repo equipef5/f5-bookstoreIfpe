@@ -8,12 +8,13 @@ import java.util.List;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
-import br.com.equipef5.bookstore.model.modelLivro;
+import br.com.equipef5.bookstore.model.Livro;
 import br.com.equipef5.bookstore.util.ConnectionFactory;
 
 public class LivroDao {
 	
 	private Connection connection;
+	
 	public LivroDao() {
 	try {
 	this.connection = (Connection) new ConnectionFactory().getConnection();
@@ -21,7 +22,7 @@ public class LivroDao {
 	throw new RuntimeException(e);
 	}
 	}
-	public void salvar(modelLivro livro) {
+	public void salvar(Livro livro) {
 	try {
 	String sql = "INSERT INTO livros (titulo, autor, editora, ano, quantidade,imagem) VALUES (?,?,?,?,?,?)";
 	PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
@@ -40,34 +41,33 @@ public class LivroDao {
 	} catch (SQLException e) {
 	    throw new RuntimeException(e);
 	}}
-	public modelLivro buscar(String titulo) {
+	public Livro buscar(String titulo) {
 
 		try {
 		    java.sql.PreparedStatement stmt = connection.prepareStatement("SELECT * FROM livros WHERE titulo = ?");
-		    stmt.setString(0, titulo);
+		    stmt.setString(1, titulo);
 		    ResultSet rs = stmt.executeQuery();
 
-		    modelLivro modelLivro = null;
+		    Livro livro = null;
 		    if (rs.next()) {
-		    	modelLivro = montarObjeto(rs);
+		    	livro = montarObjeto(rs);
 		    }
 
 		    rs.close();
 		    stmt.close();
 		    
-		    return modelLivro;
+		    return livro;
 		} catch (SQLException e) {
 		    throw new RuntimeException(e);
 		}
 	}
 
  
-
-	 public List<modelLivro> listar() {
+	 public List<Livro> listar() {
 
 			try {
 
-			    List<modelLivro> listarLivros = new ArrayList<modelLivro>();
+			    List<Livro> listarLivros = new ArrayList<Livro>();
 			    PreparedStatement stmt = (PreparedStatement) this.connection.prepareStatement("SELECT * FROM livros ORDER BY id");
 
 			    ResultSet rs = stmt.executeQuery();
@@ -78,7 +78,7 @@ public class LivroDao {
 
 			    rs.close();
 			    stmt.close();
-			    connection.close();
+			   
 
 			    return listarLivros;
 
@@ -86,21 +86,65 @@ public class LivroDao {
 			    throw new RuntimeException(e);
 			}
 		    }
+	 
+	 public void alterar(Livro livro) {
+				// TODO Auto-generated method stub
+		 String sql = "UPDATE livros SET titulo = ? , autor = ? , editora = ? , ano  = ? , quantidade = ? , imagem = ? WHERE id = ?";
 
-	 private modelLivro montarObjeto(ResultSet rs) throws SQLException {
+			try {
 
-		 modelLivro modelLivro = new modelLivro();
-		 modelLivro.setId(rs.getInt("id"));
-		 modelLivro.setTitulo(rs.getString("titulo"));
-		 modelLivro.setAutor(rs.getString("autor"));
-		 modelLivro.setEditora(rs.getString("editora"));
-		 modelLivro.setAno(rs.getString("ano"));
-		 modelLivro.setImagem(rs.getString("imagem"));
+			    PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
+			    stmt.setString(1, livro.getTitulo());
+			    stmt.setString(2, livro.getAutor());
+			    stmt.setString(3, livro.getEditora());
+			    stmt.setString(4, livro.getAno());
+			    stmt.setInt(5, livro.getQuantidade());
+			    stmt.setString(6, livro.getImagem());
+			    stmt.setInt(7, livro.getId());
+			    stmt.execute();
+			    stmt.close();
+			 
+			} catch (SQLException e) {
+			    throw new RuntimeException(e);
+			}
+		    }
+			
+	 
+	 public void remover(Livro livro) {
+			// TODO Auto-generated method stub
+		 try {
+			    PreparedStatement stmt = (PreparedStatement) connection.prepareStatement("DELETE FROM livros WHERE id = ?");
+			    stmt.setLong(1, livro.getId());
+			    stmt.execute();
+			    stmt.close();
+			    
+			} catch (SQLException e) {
+			    throw new RuntimeException(e);
+			}
+		    }
+		
+		
+
+	 private Livro montarObjeto(ResultSet rs) throws SQLException {
+
+		 Livro livro = new Livro();
+		 livro.setId(rs.getInt("id"));
+		 livro.setTitulo(rs.getString("titulo"));
+		 livro.setAutor(rs.getString("autor"));
+		 livro.setEditora(rs.getString("editora"));
+		 livro.setAno(rs.getString("ano"));
+		 livro.setQuantidade(rs.getInt("quantidade"));
+		 livro.setImagem(rs.getString("imagem"));
 		
 		 
-			return modelLivro;
+			return livro;
 		   
 			
 		    }
+		public void close() throws SQLException{
+			connection.close();
+		}
+		
+		
 		   
 }

@@ -1,20 +1,22 @@
 package TesteLivro;
 
+import java.sql.SQLException;
+
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import br.com.equipef5.bookstore.Dao.LivroDao;
-import br.com.equipef5.bookstore.model.modelLivro;
+import br.com.equipef5.bookstore.model.Livro;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class testeLivro {
 	@Test
 	public void guardarInformacoes() throws Exception {
 		LivroDao dao = new LivroDao();
-		modelLivro modelLivro= new modelLivro();
-		modelLivro modelLivroPesquisa = new modelLivro();
+		Livro modelLivro= new Livro();
+		Livro modelLivroPesquisa = new Livro();
 
 		modelLivro.setTitulo("java");
 		modelLivro.setAutor("ifpe");
@@ -27,4 +29,26 @@ public class testeLivro {
 		dao.close();
 		Assert.assertEquals ("java",modelLivroPesquisa.getTitulo());
 	}
-}
+	@Test
+	public void removerLivro() throws SQLException {
+		LivroDao dao = new LivroDao();
+	Livro modelLivro = new Livro();
+		modelLivro = dao.buscar("java");
+		dao.remover(modelLivro);
+		modelLivro = dao.buscar("java");
+		dao.close();
+		Assert.assertEquals (null,modelLivro);
+
+	}
+	
+		
+			
+
+
+
+	}
+	
+	
+	
+	
+

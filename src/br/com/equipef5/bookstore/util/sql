@@ -1,28 +1,50 @@
 create DATABASE  biblioteca;
 
-  create TABLE  adm (
-   login VARCHAR(20) NOT NULL,  
-   senha VARCHAR(10) NOT NULL  
+  create TABLE  administrador (
+   id INT NOT NULL  AUTO_INCREMENT PRIMARY KEY,
+   nome VARCHAR (50) NOT NULL, 
+   login VARCHAR(30) NOT NULL,  
+   senha VARCHAR(14) NOT NULL  
  );
 
-  INSERT INTO adm  ( login, senha)  
-   VALUES ('Bonif�cio Muniz',  
-   MD5('adminIF2016'));
 
 create TABLE  livros (
     id INT NOT NULL  AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(50) NOT NULL,  
     autor VARCHAR(50) NOT NULL,
-    editora VARCHAR(50) NOT NULL,
+    editora VARCHAR(30) NOT NULL,
     ano VARCHAR (6) NOT NULL, 
-    quantidade (50) NOT NULL
+    quantidade int NOT NULL,
+    imagem VARCHAR (100) NOT NULL,
+    admfk int NOT NULL,
+    
+    FOREIGN KEY (admfk)references adm(id)
+    
  ); 
 
-create TABLE  alunos (
+    create TABLE  alunos (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(50) NOT NULL,  
     cpf VARCHAR(14) NOT NULL  ,
-    telefone VARCHAR(9) NOT NULL,
-    email VARCHAR (6) NOT NULL,  
-    matricula VARCHAR(14) NOT NULL
+    telefone VARCHAR(20) NOT NULL,
+    email VARCHAR (50) NOT NULL,  
+    matricula VARCHAR(8) NOT NULL,
+    admfk int NOT NULL,
+    
+    FOREIGN KEY (admfk)references adm(id)
+	 
+    
+ );
+ 
+	 create table emprestimo(
+	 id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	 livrosfk int NOT NULL,
+	 alunosfk int NOT NULL,
+	 dt_emprestimo date NOT NULL,
+	 dt_devolucao date  NOT NULL,
+	 
+	 FOREIGN KEY (livrosfk)references livros(id),
+	 FOREIGN KEY (alunosfk)references alunos(id)
+	 
+	 
  );

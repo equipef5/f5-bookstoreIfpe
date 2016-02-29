@@ -5,7 +5,7 @@
 <head>
 <link rel="stylesheet" type="text/css" href="view/css/login.css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Login</title>
 </head>
 <body>
 </br></br>
@@ -21,10 +21,10 @@
          <img id="profile-img" class="profile-img-card" src="view/imagens/chave-com-cadeado.png" />
             <p id="profile-name" class="profile-name-card"></p>
             
-            <form class="form-signin" action="validarLogin">
+            <form class="form-signin" action="efetuarLogin">
                 <span id="reauth-email" class="reauth-email"></span>
-                <input type="text" id="nome" class="form-control" placeholder="Nome" required autofocus>
-                <input type="password" id="senha" class="form-control" placeholder="Senha" required>
+                <input type="text" name="login" class="form-control" placeholder="Login" required="required">
+                <input type="password" name="senha" class="form-control" placeholder="Senha" required="required">
                 <div id="remember" class="checkbox">
                 
                     <label>

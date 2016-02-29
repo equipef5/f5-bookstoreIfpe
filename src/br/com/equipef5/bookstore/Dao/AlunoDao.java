@@ -9,79 +9,77 @@ import java.util.List;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
-import br.com.equipef5.bookstore.model.modelAluno;
+import br.com.equipef5.bookstore.model.Aluno;
 import br.com.equipef5.bookstore.util.ConnectionFactory;
 
 
 public class AlunoDao {
 	//Banco
 	private Connection connection;
+	
 	public AlunoDao() {
+		
 	try {
-	this.connection = (Connection) new ConnectionFactory().getConnection();
+	    this.connection = (Connection) new ConnectionFactory().getConnection();
 	} catch (SQLException e) {
-	throw new RuntimeException(e);
+	    throw new RuntimeException(e);
 	}
 	}
 	//Fim
 	
-	
-	public void salvar(modelAluno aluno) {
+	public void salvar(Aluno aluno) {
+		
 	try {
-	String sql = "INSERT INTO alunos (nome, cpf, telefone, email, matricula) VALUES (?,?,?,?,?)";
-	PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
-	
-	
-	stmt.setString(1, aluno.getNome());
-	stmt.setString(2, aluno.getCpf());
-	stmt.setString(3, aluno.getTelefone());
-	stmt.setString(4, aluno.getEmail());
-	stmt.setString(5, aluno.getMatricula());
-	
-
-	 stmt.execute();
+	    String sql = "INSERT INTO alunos (nome, cpf, telefone, email, matricula) VALUES (?,?,?,?,?)";
+	    PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
+	    stmt.setString(1, aluno.getNome());
+		stmt.setString(2, aluno.getCpf());
+		stmt.setString(3, aluno.getTelefone());
+		stmt.setString(4, aluno.getEmail());
+		stmt.setString(5, aluno.getMatricula());
+		stmt.execute();
 	} catch (SQLException e) {
-	    throw new RuntimeException(e);
-	}}
+		 throw new RuntimeException(e);
+	}
+}
 	
-	public void alterar(modelAluno modelAluno) {
+	public void alterar(Aluno aluno) {
 
 		String sql = "UPDATE alunos SET nome = ? , cpf = ? , telefone = ? , email  = ? , matricula = ? WHERE id = ?";
 
 		try {
-
-		    PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
-		    stmt.setString(1, modelAluno.getNome());
-		    stmt.setString(2, modelAluno.getCpf());
-		    stmt.setString(3, modelAluno.getTelefone());
-		    stmt.setString(4, modelAluno.getEmail());
-		    stmt.setString(5, modelAluno.getMatricula());
-		    stmt.setInt(6, modelAluno.getId());
+            PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
+		    stmt.setString(1, aluno.getNome());
+		    stmt.setString(2, aluno.getCpf());
+		    stmt.setString(3, aluno.getTelefone());
+		    stmt.setString(4, aluno.getEmail());
+		    stmt.setString(5, aluno.getMatricula());
+		    stmt.setInt(6, aluno.getId());
 		    stmt.execute();
 		    stmt.close();
-		    connection.close();
+		   
 		} catch (SQLException e) {
 		    throw new RuntimeException(e);
 		}
 	    }
 
-	    public void remover (modelAluno modelAluno) {
+	    public void remover (Aluno aluno) {
 
 		try {
 		    PreparedStatement stmt = (PreparedStatement) connection.prepareStatement("DELETE FROM alunos WHERE id = ?");
-		    stmt.setLong(1, modelAluno.getId());
+		    stmt.setLong(1, aluno.getId());
 		    stmt.execute();
 		    stmt.close();
-		    connection.close();
+		  
 		} catch (SQLException e) {
 		    throw new RuntimeException(e);
 		}
 	    }
 
-	public List<modelAluno>listar() {
+	public List<Aluno>listar() {
 
     	try {
-    	    List<modelAluno> listarAlunos = new ArrayList<modelAluno>();
+    	    List<Aluno> listarAlunos = new ArrayList<Aluno>();
     	    java.sql.PreparedStatement stmt = this.connection.prepareStatement("SELECT * FROM alunos ORDER BY id");
 
     	    ResultSet rs = stmt.executeQuery();
@@ -94,53 +92,50 @@ public class AlunoDao {
     	    stmt.close();
     	   
     	    return listarAlunos;
+    	
     	} catch (SQLException e) {
     	    throw new RuntimeException(e);
-    	}
-        }
+    }
+  }
 	
-	public modelAluno buscar(String cpf) {
+	public Aluno buscar(String cpf) {
 
 		try {
 		    java.sql.PreparedStatement stmt = connection.prepareStatement("SELECT * FROM alunos WHERE cpf = ?");
-		    stmt.setString(0, cpf);
+		    stmt.setString(1, cpf);
 		    ResultSet rs = stmt.executeQuery();
 
-		    modelAluno modelAluno = null;
+		    Aluno aluno = null;
 		    if (rs.next()) {
-		    	modelAluno = montarObjeto(rs);
+		    	aluno = montarObjeto(rs);
 		    }
 
 		    rs.close();
 		    stmt.close();
 		    
-		    return modelAluno;
+		    return aluno;
+		    
 		} catch (SQLException e) {
 		    throw new RuntimeException(e);
 		}
     }
 		
-		private modelAluno montarObjeto(ResultSet rs) throws SQLException {
+		private Aluno montarObjeto(ResultSet rs) throws SQLException {
 
-			 modelAluno modelAluno = new modelAluno();
-			 modelAluno.setId(rs.getInt("id"));
-			 modelAluno.setNome(rs.getString("nome"));
-			 modelAluno.setCpf(rs.getString("cpf"));
-			 modelAluno.setTelefone(rs.getString("telefone"));
-			 modelAluno.setEmail(rs.getString("email"));
-			 modelAluno.setMatricula(rs.getString("matricula"));
+			 Aluno aluno = new Aluno();
+			 aluno.setId(rs.getInt("id"));
+			 aluno.setNome(rs.getString("nome"));
+			 aluno.setCpf(rs.getString("cpf"));
+			 aluno.setTelefone(rs.getString("telefone"));
+			 aluno.setEmail(rs.getString("email"));
+			 aluno.setMatricula(rs.getString("matricula"));
 			
-			 
-				return modelAluno;
-			   
-				   
-				
-			    }
+			 return aluno;
+ }
+		
 		public void close() throws SQLException{
 			connection.close();
-		}
-		
-
+	}		
 }
 
 	

@@ -1,6 +1,6 @@
 package br.com.equipef5.bookstore.model;
 
-public class modelLivro {
+public class Livro {
 	//Atributos
 	private int id;
 	private String titulo;

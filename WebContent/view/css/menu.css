@@ -1,0 +1,49 @@
+.navbar>li.ativo>a{
+	color: #fff;
+	background-color: #65B332;
+	text-decoration: none;
+}
+.ativo2>a{
+	background-color:white;
+	color:#65B332 ;
+}
+.glyphis-chevron-right{
+	position: absolute;
+	top: 50%;
+	z-index: 5;
+	display: inline-block;
+	margin-top: -10px;
+	right: 50%;
+	margin-right: -10px;
+width: 30px;
+		height: 30px;
+		font-size: 30px;
+		content: "\e080";
+}
+.glyphicon {
+	position: relative;
+	top: 1px;
+	display: inline-block;
+	font-family: 'Glyphicons Halflings';
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+@font-face {
+	font-family: 'Glyphicons Halflings';
+	src: url('../fonts/glyphicons-halflings-regular.eot');
+	src: url('../fonts/glyphicons-halflings-regular.eot?#iefix')
+		format('embedded-opentype'),
+		url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'),
+		url('../fonts/glyphicons-halflings-regular.woff') format('woff'),
+		url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'),
+		url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular')
+		format('svg');
+}
+.nav>li>a:hover, .nav>li>a:focus {
+	
+	background-color: green;
+}
+}

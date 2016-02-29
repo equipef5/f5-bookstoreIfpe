@@ -1,4 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"   pageEncoding="ISO-8859-1"%>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,7 +13,7 @@
 	<script src="view/js/jquery.min.js"></script>
 	<script src="view/js/table.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Cadastro de Aluno</title>
+<title>Cadastro de Livro</title>
 </head>
 <body>
 
@@ -25,6 +27,9 @@
 			
 	  <img align="left" src="view/imagens/IFPE_imagem.png" style="width: 380; height: 105px;">
 	    <h3 align="right" style="font-family: arial black; font-size: x-larger">BOOKSTORE </h3>
+	    
+	    <h3 style="color:green"> <b> Bem vindo, ${usuarioLogado.login}! </b> </h3>
+				</br>
 	</div>
 
     <div style="float: right; margin-right: 20px;">
@@ -63,63 +68,71 @@
 	</div>
 	
 	<!-- end -->
-
-<!-- form -->
-	<div style="margin-left: 40%">
-	<div class="container-page">				
-	<div class="col-md-9 ">
-	
-	  <h2 class="dark-grey" align="center"> <b><i> Cadastro de Aluno </i></b></h2>  <br> <br> <br>
-				  
-    <form role="form" action="incluirAluno" method="post">
-	<div class="form-group col-lg-12">
-	
-	  <label>Nome Completo:</label>
-		 <input type="text" name="nome" class="form-control" placeholder="Nome Completo"">
-	</div>
-				
-	<div class="form-group col-lg-12">
-		<label>Cpf:</label>
-			<input type="text" name="cpf" class="form-control" placeholder="Cpf"">
-	</div>
-				
-				
-    <div class="form-group col-lg-12">
-		<label>Telefone: </label>
-			<input type="text" name="telefone" class="form-control"   placeholder="Telefone">
-	</div>
-				
-	<div class="form-group col-lg-12">
-	   <label >E-mail:</label>
-		  <input type="text" name="email" class="form-control" placeholder="E-mail" >
-	</div>
-				
-	 <div class="form-group col-lg-12">
-		<label >Matricula: </label>
-			<input type="text" name="matricula" class="form-control" placeholder="Matrícula"  >
-	</div>
-				
-	 <div class="form-group col-lg-12">
-	 <div align="center" >
-		 <button class="btn btn-success "type="submit" onclick="alert('Aluno Cadastrado!')"> <i class="glyphicon glyphicon-ok"></i> Confirmar </button> &nbsp;&nbsp;
-		 
-		 <button class="btn btn-success "> <i class="glyphicon glyphicon-erase"></i>Cancelar	</button>
-	</div>
-	</div>	
-	</form>
-	</div>
-	</div>
-    </div>
 <!-- end -->
+	<div class="container " style="height: 940px;width: 130px">
+		
+					<div class="container">
+						<h2>Campus Jaboatão dos Guararapes</h2>
+						  <br> <br> <br> <br>
+						  
+						 
+						<div class="container">
+	<div class="row">
+        <div class="col-md-3">
+          <div style="margin-left: 490px">  <form action="pesquisarLivro" method="post">
+                <div class="input-group">
+                    <input  id="system-search" name="q" placeholder="Search for" required><span class="input-group-btn"><button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+                    </span>
+                </div>
+                <br> <br>
+            </form></div>
+        </div>
+		<div class="col-md-9">
+    	 <table class="table table-list-search">
+            <thead>
+             <tr>
+                   <th>Codigo</th>
+                   <th>Título</th>
+                 
+         
+                   
 
-<!-- rodapé -->
+                        </tr>
+                    </thead>
+                    <tbody>
+     <c:forEach var="livro" items="${listarLivros}">
+    <tr>
+    
+    <td>${livro.id}</td>
+    <td>${livro.titulo}</td>
+   
+    <td>
+    
+    	<!-- <a href="exibirAlterarLivro?titulo=${livro.titulo}" > 
+    		 Carregar
+    	</a> -->
+    
+    			<button class="btn btn-primary btn-xs"  type="button" data-toggle="modal" data-target="#edit" >
+    				<span class="glyphicon glyphicon-pencil"></span></button></td>
+    
+    			
+    		
+    
+    <td> <a href="removerLivro?id=${livro.id}"><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p> </a> </td>
+    </tr>
+    
+    </c:forEach>
+                    </tbody>
+                </table>   
+		</div>
+	</div>
+</div>
+	<!-- end -->
+	<!-- rodapé -->
      <footer id="footer" >
         <p align="center"> BookstoreIfpe por EquipeF5 </p>
      </footer>
-<!-- end -->
-
-	
-	
+<!-- end -->				
+				
 </body>
-
 </html>

@@ -1,4 +1,4 @@
-    #custom-search-form {
+ #custom-search-form {
         margin:0;
         margin-top: 5px;
         padding: 0;
@@ -31,18 +31,164 @@
         -moz-border-radius: 3px;
         border-radius: 3px;
     }
+ .btnSucess{
  
+ }
     .search-query:focus + button {
         z-index: 3;   
     }
-    .input2{
-    margin-left: 15%;
-    }
-    .button2{
-      margin-left: 20%;
+   /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {height: 1500px}
     
+    /* Set gray background color and 100% height */
+    .sidenav {
+      
+      height: 40%;
     }
-    body {
-    margin-top: 2%
+    .menudesce {
+   
+     float:right;
+      width:auto; 
+   position:relative;
+   position:absolute;
+    display: none;
+    float: right;
+    min-width:60px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align:left;
+    list-style: none;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    }   
+    .open > .menudesce {
+    display: block;
+} .menudesce .divider {
+	height: 1px;
+	margin: 9px 0;
+	overflow: hidden;
+	background-color: #e5e5e5;
+}.dropdown-menu>li>a {
+	display: block;
+	padding: 3px 20px;
+	clear: both;
+	font-weight: normal;
+	line-height: 1.42857143;
+	color: #333;
+	white-space: nowrap;
+}li>a {
+	display: block;
+	padding: 3px 20px;
+	clear: both;
+	font-weight: normal;
+	line-height: 1.42857143;
+	color: #333;
+	white-space: nowrap;
 }
+
+
+/* Set black background color, white text and some padding */
+   
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+    .label,.glyphicon { margin-right:5px; }
+    
+   
+    
+    
+Bootsnipp
+
+    About
+    Tools
+    Snippets
+    Register
+    Login
+
+"Tumblr cards redesign concept"
+Bootstrap 3.3.0 Snippet by maridlcrmn
+3.3.0 lists responsive animation card
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+/*
+Code snippet by maridlcrmn for Bootsnipp.com
+Follow me on Twitter @maridlcrmn
+Image credits: unsplash.com, uifaces.com/authorized
+Image placeholders: placemi.com
+*/
+#t-cards {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-color: #345;    
 }
+/********************************/
+/*          Panel cards         */
+/********************************/
+.panel.panel-card {
+    position: relative;
+    height: 241px;
+    border: none;
+    overflow: hidden;
+}
+.panel.panel-card .panel-heading {
+    position: relative;
+    z-index: 2;
+    height: 120px;
+    border-bottom-color: #fff;
+    overflow: hidden;
+    
+Similar snippets: See More
+
+Tumblr cards redesign concept - no hover
+
+Tumblr cards redesign concept fork
+
+Tumblr cards redesign concept - no hover
+
+Tumblr cards redesign concept - no hover
+Comments:
+
+    Follow @bootsnipp Tweet 
+
+Bootsnipp.com � 2015 Dan's Tools | Site Privacy policy | Featured snippets are MIT license.
+   

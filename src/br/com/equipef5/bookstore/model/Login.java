@@ -1,6 +1,6 @@
 package br.com.equipef5.bookstore.model;
 
-public class modelLogin {
+public class Login {
 
 private	String nome;
 private	 String senha;

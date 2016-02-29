@@ -4,59 +4,114 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
 
-import br.com.equipef5.bookstore.model.modelAdm;
-import br.com.equipef5.bookstore.model.modelAluno;
+import br.com.equipef5.bookstore.model.Adm;
+import br.com.equipef5.bookstore.model.Livro;
 import br.com.equipef5.bookstore.util.ConnectionFactory;
 
 public class AdmDao {
-	//Banco
-		private Connection connection;
-		public AdmDao() {
-		try {
-		this.connection = (Connection) new ConnectionFactory().getConnection();
-		} catch (SQLException e) {
-		throw new RuntimeException(e);
-		}
-		}
-		//Fim
+	
 
-	public boolean ValidarAdm(String login,String senha) {
+	private Connection connection;
+	
+	public AdmDao() {
+		
+	try {
+	    this.connection = (Connection) new ConnectionFactory().getConnection();
+	} catch (SQLException e) {
+	   throw new RuntimeException(e);
+	}
+	}
+	//Fim
+	
+	public void salvar(Adm adm) {
+		
+	try {
+		String sql = "INSERT INTO administrador (nome, login , senha) VALUES (?,?,?)";
+		PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
+	    stmt.setString(1, adm.getNome());
+		stmt.setString(2, adm.getLogin());
+		stmt.setString(3, adm.getSenha());
+   	    stmt.execute();
+	} catch (SQLException e) {
+		    throw new RuntimeException(e);
+	}
+	}
+	
+	private Object connection1;
+
+	public Adm buscarUsuario(Adm adm) {	
+		
+	try {
+		Adm admConsultado = null;
+	    PreparedStatement stmt = (PreparedStatement) ((java.sql.Connection) this.connection).prepareStatement("select * from administrador where login = ? and senha = ?");
+		stmt.setString(1, adm.getLogin());
+		stmt.setString(2, adm.getSenha());
+		ResultSet rs = stmt.executeQuery();
+		
+		if (rs.next()) {
+		admConsultado = montarObjeto(rs);
+		}
+	
+		rs.close();
+		stmt.close();
+		
+		return admConsultado;
+	 
+	} catch (SQLException e) {
+	   throw new RuntimeException(e);
+	}
+	}
+	
+	public void alterar(Adm adm) {
+		// TODO Auto-generated method stub
+    String sql = "UPDATE administrador SET nome = ? , senha = ?  WHERE login = ?";
+
+	try {
+
+	    PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
+	    stmt.setString(1, adm.getNome());
+	    stmt.setString(2, adm.getSenha());
+	    stmt.setString(3, adm.getLogin());
+	  
+	    stmt.execute();
+	    stmt.close();
+	  
+	} catch (SQLException e) {
+	    throw new RuntimeException(e);
+	}
+    }
+	
+	public Adm buscar(String login) {
 
 		try {
-		    java.sql.PreparedStatement stmt = connection.prepareStatement("SELECT * FROM adm WHERE login = ? and senha = ? ");
+		    java.sql.PreparedStatement stmt = connection.prepareStatement("SELECT * FROM administrador WHERE login = ?");
 		    stmt.setString(1, login);
-		    stmt.setString(2, senha);
 		    ResultSet rs = stmt.executeQuery();
-
-		    modelAdm modelAdm = null;
+            
+		    Adm adm = null;
 		    if (rs.next()) {
-		    	modelAdm = montarObjeto(rs);
+		    adm = montarObjeto(rs);
 		    }
 
 		    rs.close();
 		    stmt.close();
 		    
-		    return modelAdm != null;
+		    return adm;
 		} catch (SQLException e) {
 		    throw new RuntimeException(e);
 		}
-		
 	}
-		private modelAdm montarObjeto(ResultSet rs) throws SQLException {
 
-			 modelAdm modelAdm = new modelAdm();
-			 modelAdm.setLogin(rs.getString("login"));
-			 modelAdm.setSenha(rs.getString("senha"));
-			 
-				return modelAdm;
-			   
-				   
-				
-			    }
-	
-	public void close() throws SQLException{
-		connection.close();
-	}
-	
+
+	 private Adm montarObjeto(ResultSet rs) throws SQLException {
+		
+          Adm adm = new Adm();
+          adm.setNome(rs.getString("nome"));
+		  adm.setLogin(rs.getString("login"));
+		  adm.setSenha(rs.getString("senha"));
+		 
+		  return adm;
+  }		
 }

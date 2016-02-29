@@ -2,9 +2,9 @@ package br.com.equipef5.bookstore.model;
 
 import java.util.Date;
 
-public class modelEmprestimo {
+public class Emprestimo {
 	String Aluno;
-	String Livro;
+    private Livro Livro;
 	Date dataEmprestimo;
 	Date dataDevolucao;
 	
@@ -14,10 +14,11 @@ public class modelEmprestimo {
 	public void setAluno(String aluno) {
 		Aluno = aluno;
 	}
-	public String getLivro() {
+	
+	public Livro getLivro() {
 		return Livro;
 	}
-	public void setLivro(String livro) {
+	public void setLivro(Livro livro) {
 		Livro = livro;
 	}
 	public Date getDataEmprestimo() {
