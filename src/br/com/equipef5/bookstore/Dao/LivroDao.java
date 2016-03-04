@@ -68,7 +68,7 @@ public class LivroDao {
 			try {
 
 			    List<Livro> listarLivros = new ArrayList<Livro>();
-			    PreparedStatement stmt = (PreparedStatement) this.connection.prepareStatement("SELECT * FROM livros ORDER BY id");
+			    PreparedStatement stmt = (PreparedStatement) this.connection.prepareStatement("SELECT * FROM livros ORDER BY idLivro");
 
 			    ResultSet rs = stmt.executeQuery();
 
@@ -89,7 +89,7 @@ public class LivroDao {
 	 
 	 public void alterar(Livro livro) {
 				// TODO Auto-generated method stub
-		 String sql = "UPDATE livros SET titulo = ? , autor = ? , editora = ? , ano  = ? , quantidade = ? , imagem = ? WHERE id = ?";
+		 String sql = "UPDATE livros SET titulo = ? , autor = ? , editora = ? , ano  = ? , quantidade = ? , imagem = ? WHERE idLivro = ?";
 
 			try {
 
@@ -100,7 +100,7 @@ public class LivroDao {
 			    stmt.setString(4, livro.getAno());
 			    stmt.setInt(5, livro.getQuantidade());
 			    stmt.setString(6, livro.getImagem());
-			    stmt.setInt(7, livro.getId());
+			    stmt.setInt(7, livro.getidLivro());
 			    stmt.execute();
 			    stmt.close();
 			 
@@ -113,8 +113,8 @@ public class LivroDao {
 	 public void remover(Livro livro) {
 			// TODO Auto-generated method stub
 		 try {
-			    PreparedStatement stmt = (PreparedStatement) connection.prepareStatement("DELETE FROM livros WHERE id = ?");
-			    stmt.setLong(1, livro.getId());
+			    PreparedStatement stmt = (PreparedStatement) connection.prepareStatement("DELETE FROM livros WHERE idLivro = ?");
+			    stmt.setLong(1, livro.getidLivro());
 			    stmt.execute();
 			    stmt.close();
 			    
@@ -128,7 +128,7 @@ public class LivroDao {
 	 private Livro montarObjeto(ResultSet rs) throws SQLException {
 
 		 Livro livro = new Livro();
-		 livro.setId(rs.getInt("id"));
+		 livro.setIdLivro(rs.getInt("idLivro"));
 		 livro.setTitulo(rs.getString("titulo"));
 		 livro.setAutor(rs.getString("autor"));
 		 livro.setEditora(rs.getString("editora"));

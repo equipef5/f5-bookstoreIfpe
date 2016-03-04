@@ -25,38 +25,41 @@
     </div>
 	</nav>
 <!-- end  -->
+<div style="margin-left:30%;margin-right:30%">
+	<div class="container-page">				
 	
+		
     <div align="center">
 	
 	   <h3>Alterar Dados do Aluno</h3>
  
    <form action="alterarAluno" method="post" >
 	<div class="form-group col-lg-12">
-	     <input type="hidden" name="id" size="50px" value="${Aluno.id}">
-	     <input type="hidden" name="id" size="50px" value="${LivroE.id}">
+	     <input type="hidden" name="id" size="50px" value="${alunoA.id}">
+
 	  <label>Nome Completo:</label>
-		 <input type="text" name="nome" class="form-control" value="${Aluno.nome}" placeholder="Nome Completo"">
+		 <input type="text" name="nome" class="form-control" value="${alunoA.nome}" placeholder="Nome Completo"">
 	</div>
 				
 	<div class="form-group col-lg-12">
 		<label>Cpf:</label>
-			<input type="text" name="cpf" class="form-control" value="${Aluno.cpf}" placeholder="Cpf"">
+			<input type="text" name="cpf" class="form-control" value="${alunoA.cpf}" placeholder="Cpf"">
 	</div>
 				
 				
     <div class="form-group col-lg-12">
 		<label>Telefone</label>
-			<input type="text" name="telefone" class="form-control"  value="${Aluno.telefone}" placeholder="Telefone">
+			<input type="text" name="telefone" class="form-control"  value="${alunoA.telefone}" placeholder="Telefone">
 	</div>
 				
 	<div class="form-group col-lg-12">
 	   <label >E-mail:</label>
-		  <input type="text" name="email" class="form-control" value="${Aluno.email}" placeholder="E-mail" >
+		  <input type="text" name="email" class="form-control" value="${alunoA.email}" placeholder="E-mail" >
 	</div>
 				
 	 <div class="form-group col-lg-12">
 		<label >Matricula: </label>
-			<input type="text" name="matricula" class="form-control" value="${Aluno.matricula} " placeholder="Matrícula"  >
+			<input type="text" name="matricula" class="form-control" value="${alunoA.matricula} " placeholder="Matrícula"  >
 	</div>
 	 <div class="form-group col-lg-12">
 	 <div align="center" >
@@ -67,6 +70,9 @@
 	</div>	
 	</form>
 	</div>
+    </div>
+    </div>
+
     
 <!-- rodapé -->
      <footer id="footer" >

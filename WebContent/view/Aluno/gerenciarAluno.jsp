@@ -32,7 +32,6 @@
 	<ul class="menudesce" role="menu">
 	   <li><a href="exibirIncluirAdministrador">Cadastrar Novo</a></li>
 	   <li><a href="exibirAlterarSenha">Trocar Senha</a></li>
-	   <li><a href="#">Lista</a></li>
 	   <li class="divider"></li>
 	   <li><a href="logout">Logout</a></li>
 	</ul>
@@ -103,21 +102,19 @@
           <c:forEach var="aluno" items="${listarAlunos}">
        <tr>
     
-	    <td><a href="dadosA?id=${aluno.id}&titulo=${titulo}">${aluno.id}</a></td>
+	    <td><a href="dadosA?id=${aluno.idAluno}&titulo=${titulo}">${aluno.idAluno}</a></td>
 	    <td>${aluno.nome}</td>
 	    <td>${aluno.cpf}</td>
 	    <td>${aluno.telefone}</td>
 	    <td>${aluno.email}</td>
 	    <td>${aluno.matricula}</td>
-	    <td> <a href="exibirAlterarAluno?cpf=${aluno.cpf}">  Carregar</a>
-	    
-	     <p data-placement="top" data-toggle="tooltip" title="Edit">
-    		<button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" > <span class="glyphicon glyphicon-pencil"></span> </button>
+	    <td> <a href="exibirAlterarAluno?cpf=${aluno.cpf}"> <p data-placement="top" data-toggle="tooltip" title="Edit">
+    		<button class="btn btn-primary btn-xs" data-title="Edit"> <span class="glyphicon glyphicon-pencil"></span> </button>
     	</p>
     	
      </td>
     
-       <td> <a href="removerAluno?id=${aluno.id}"><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p> </a> </td>
+       <td> <a href="removerAluno?id=${aluno.idAluno}"><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p> </a> </td>
      </tr>
     </c:forEach>
     </tbody>

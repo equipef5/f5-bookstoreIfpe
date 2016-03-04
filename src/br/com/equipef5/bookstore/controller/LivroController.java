@@ -3,8 +3,11 @@ package br.com.equipef5.bookstore.controller;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -22,11 +25,12 @@ public class LivroController {
 	 }
 
 	@RequestMapping("incluirLivro")
-	public String incluirLivro(Livro livro, @RequestParam ("file") MultipartFile imagem, Model model) {
+	public String incluirLivro( @Valid Livro livro, @RequestParam ("file") MultipartFile imagem, BindingResult result , Model model) {
 		
 	if (Util.fazerUploadImagem(imagem)) {
 	livro.setImagem(Calendar.getInstance().getTime() + " - " + imagem.getOriginalFilename());
 	 }
+
 		
 	LivroDao dao = new LivroDao();
 	dao.salvar(livro);

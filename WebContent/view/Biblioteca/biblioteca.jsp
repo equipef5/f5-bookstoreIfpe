@@ -37,7 +37,6 @@
 		<ul class="menudesce" role="menu">
 			<li><a href="exibirIncluirAdministrador">Cadastrar Novo</a></li>
 			<li><a href="exibirAlterarSenha">Trocar Senha</a></li>
-			<li><a href="#">Lista</a></li>
 			<li class="divider"></li>
 			<li><a href="logout">Logout</a></li>
 		</ul>

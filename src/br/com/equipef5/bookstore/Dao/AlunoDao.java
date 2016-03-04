@@ -43,31 +43,34 @@ public class AlunoDao {
 	}
 }
 	
+	
 	public void alterar(Aluno aluno) {
 
-		String sql = "UPDATE alunos SET nome = ? , cpf = ? , telefone = ? , email  = ? , matricula = ? WHERE id = ?";
+		String sql = "UPDATE alunos SET nome = ? , cpf = ? , telefone = ? , email = ?, matricula = ? WHERE idAluno = ?";
 
 		try {
-            PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
+
+		    PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
 		    stmt.setString(1, aluno.getNome());
 		    stmt.setString(2, aluno.getCpf());
 		    stmt.setString(3, aluno.getTelefone());
 		    stmt.setString(4, aluno.getEmail());
 		    stmt.setString(5, aluno.getMatricula());
-		    stmt.setInt(6, aluno.getId());
+		    stmt.setInt(6, aluno.getIdAluno());
 		    stmt.execute();
 		    stmt.close();
-		   
+
 		} catch (SQLException e) {
 		    throw new RuntimeException(e);
 		}
 	    }
 
+
 	    public void remover (Aluno aluno) {
 
 		try {
-		    PreparedStatement stmt = (PreparedStatement) connection.prepareStatement("DELETE FROM alunos WHERE id = ?");
-		    stmt.setLong(1, aluno.getId());
+		    PreparedStatement stmt = (PreparedStatement) connection.prepareStatement("DELETE FROM alunos WHERE idAluno = ?");
+		    stmt.setLong(1, aluno.getIdAluno());
 		    stmt.execute();
 		    stmt.close();
 		  
@@ -80,7 +83,7 @@ public class AlunoDao {
 
     	try {
     	    List<Aluno> listarAlunos = new ArrayList<Aluno>();
-    	    java.sql.PreparedStatement stmt = this.connection.prepareStatement("SELECT * FROM alunos ORDER BY id");
+    	    java.sql.PreparedStatement stmt = this.connection.prepareStatement("SELECT * FROM alunos ORDER BY idAluno");
 
     	    ResultSet rs = stmt.executeQuery();
 
@@ -123,7 +126,7 @@ public class AlunoDao {
 		private Aluno montarObjeto(ResultSet rs) throws SQLException {
 
 			 Aluno aluno = new Aluno();
-			 aluno.setId(rs.getInt("id"));
+			 aluno.setIdAluno(rs.getInt("idAluno"));
 			 aluno.setNome(rs.getString("nome"));
 			 aluno.setCpf(rs.getString("cpf"));
 			 aluno.setTelefone(rs.getString("telefone"));

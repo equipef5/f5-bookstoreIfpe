@@ -1,4 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -35,7 +39,6 @@
 		<ul class="menudesce" role="menu">
 			<li><a href="exibirIncluirAdministrador">Cadastrar Novo</a></li>
 			<li><a href="exibirAlterarSenha">Trocar Senha</a></li>
-			<li><a href="#">Lista</a></li>
 			<li class="divider"></li>
 			<li><a href="logout">Logout</a></li>
 		</ul>
@@ -76,38 +79,44 @@
 	<div class="form-group col-lg-12">
 	     <input type="hidden" name="id" size="50px" >
 	  <label>Título:</label>
-		 <input type="text" name="titulo" class="form-control"  placeholder="Título do Livro">
+		 <input type="text" name="titulo" class="form-control"  placeholder="Título do Livro"> 
+		 <form:errors path="livro.titulo" cssStyle="color:red" /> <br />
 	</div>
 				
 	<div class="form-group col-lg-12">
 		<label>Autor:</label>
 			<input type="text" name="autor" class="form-control" placeholder="Autor">
+			 <form:errors path="livro.autor" cssStyle="color:red" /> <br />
 	</div>
 				
 				
     <div class="form-group col-lg-12">
 		<label>Editora:</label>
 			<input type="text" name="editora" class="form-control"  placeholder="Editora">
+			 <form:errors path="livro.editora" cssStyle="color:red" /> <br />
 	</div>
 				
 	<div class="form-group col-lg-12">
 	   <label >Ano de Lançamento:</label>
 		  <input type="text" name="ano" class="form-control"  placeholder="Ano de Lançamento" >
+		   <form:errors path="livro.ano" cssStyle="color:red" /> <br />
 	</div>
 				
 	 <div class="form-group col-lg-12">
 		<label >Quantidade de Livro: </label>
 			<input type="number" name="quantidade" class="form-control" placeholder="Quantidade de Livro"  >
+			 <form:errors path="livro.quantidade" cssStyle="color:red" /> <br />
 	</div>
 	
 	 <div class="form-group col-lg-12">
 	   <b> Imagem: </b> <br>
 	      <input type = "file" name = "file" size="50" placeholder="Imagem" > <br> <br>
+	  
 	 </div>
 				
 	 <div class="form-group col-lg-12">
 	 <div align="center" >
-		 <button class="btn btn-success "type="submit" onclick="alert('Alterado com Sucesso!!')"> <i class="glyphicon glyphicon-ok"></i> Alterar </button> &nbsp;&nbsp;
+		 <button class="btn btn-success "type="submit" onclick="alert('Livro Cadastrado com Sucesso!')"> <i class="glyphicon glyphicon-ok"></i> Confirmar </button> &nbsp;&nbsp;
 		 
 		 <button type="reset" class="btn btn-success "> <i class="glyphicon glyphicon-erase"></i>Limpar</button>
 	</div>

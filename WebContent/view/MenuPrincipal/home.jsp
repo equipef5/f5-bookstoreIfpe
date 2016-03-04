@@ -28,7 +28,7 @@
 	  <img align="left" src="view/imagens/IFPE_imagem.png" style="width: 380; height: 105px;">
 	    <h3 align="right" style="font-family: arial black; font-size: x-larger">BOOKSTORE </h3>
 	    
-	    <h3 style="color:green"> <b> Bem vindo, ${usuarioLogado.login}! </b> </h3>
+	    <h3 style="color:green"> <b> Bem vindo, ${administradorLogado.nome}! </b> </h3>
 				</br>
 	</div>
 
@@ -40,7 +40,6 @@
 		<ul class="menudesce" role="menu">
 			<li><a href="exibirIncluirAdministrador">Cadastrar Novo</a></li>
 			<li><a href="exibirAlterarSenha">Trocar Senha</a></li>
-			<li><a href="#">Lista</a></li>
 			<li class="divider"></li>
 			<li><a href="logout">Logout</a></li>
 		</ul>

@@ -2,10 +2,12 @@ package br.com.equipef5.bookstore.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.equipef5.bookstore.Dao.AlunoDao;
 import br.com.equipef5.bookstore.model.Aluno;
@@ -19,20 +21,24 @@ public class AlunoController {
 	}
 
 	@RequestMapping("incluirAluno")
-	public String incluirAluno(Aluno modelAluno) {
+	public String incluirAluno(@Valid Aluno aluno, BindingResult result) {
+	
+	if (result.hasErrors()) {
+	  return "forward:exibirCadastrarAluno";
+		}
 		
 	AlunoDao dao = new AlunoDao();
-	dao.salvar(modelAluno);
+	dao.salvar(aluno);
 	return "Aluno/incluirAluno";
 	}
 
 	@RequestMapping("/exibirGerenciarAluno")
-	public String exibirGerenciarAluno(Model model,@RequestParam("titulo") String titulo) {
+	public String exibirGerenciarAluno(Model model) {
 		
 	AlunoDao dao = new AlunoDao();
 	List<Aluno> listarAlunos = dao.listar();
 	model.addAttribute("listarAlunos", listarAlunos);
-	model.addAttribute("titulo", titulo);
+	
 	return "Aluno/gerenciarAluno";
 	}
 
@@ -51,7 +57,7 @@ public class AlunoController {
 	AlunoDao dao = new AlunoDao();
 	Aluno alunoConsultado = dao.buscar(aluno.getCpf());
 	model.addAttribute("alunoA", alunoConsultado);
-    return "forward:exibirGerenciarAluno";
+    return "Aluno/alterarAluno";
 	}
 
 	@RequestMapping("alterarAluno")

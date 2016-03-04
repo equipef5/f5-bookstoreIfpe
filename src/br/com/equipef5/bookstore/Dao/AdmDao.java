@@ -1,5 +1,6 @@
 package br.com.equipef5.bookstore.Dao;
 
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -7,7 +8,6 @@ import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
 import br.com.equipef5.bookstore.model.Adm;
-import br.com.equipef5.bookstore.model.Livro;
 import br.com.equipef5.bookstore.util.ConnectionFactory;
 
 public class AdmDao {
@@ -38,8 +38,6 @@ public class AdmDao {
 		    throw new RuntimeException(e);
 	}
 	}
-	
-	private Object connection1;
 
 	public Adm buscarUsuario(Adm adm) {	
 		
@@ -64,24 +62,25 @@ public class AdmDao {
 	}
 	}
 	
-	public void alterar(Adm adm) {
-		// TODO Auto-generated method stub
-    String sql = "UPDATE administrador SET nome = ? , senha = ?  WHERE login = ?";
+	  public void alterar(Adm adm) {
 
-	try {
+			String sql = "UPDATE administrador SET nome = ? , login = ? , senha = ? WHERE id = ?";
 
-	    PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
-	    stmt.setString(1, adm.getNome());
-	    stmt.setString(2, adm.getSenha());
-	    stmt.setString(3, adm.getLogin());
-	  
-	    stmt.execute();
-	    stmt.close();
-	  
-	} catch (SQLException e) {
-	    throw new RuntimeException(e);
-	}
-    }
+			try {
+
+			    PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
+			    stmt.setString(1, adm.getNome());
+			    stmt.setString(2, adm.getLogin());
+			    stmt.setString(3, adm.getSenha());
+			    stmt.setInt(4, adm.getId());
+			    stmt.execute();
+			    stmt.close();
+			    connection.close();
+
+			} catch (SQLException e) {
+			    throw new RuntimeException(e);
+			}
+		    }
 	
 	public Adm buscar(String login) {
 
@@ -108,6 +107,8 @@ public class AdmDao {
 	 private Adm montarObjeto(ResultSet rs) throws SQLException {
 		
           Adm adm = new Adm();
+          
+          adm.setId(rs.getInt("id"));
           adm.setNome(rs.getString("nome"));
 		  adm.setLogin(rs.getString("login"));
 		  adm.setSenha(rs.getString("senha"));

@@ -28,7 +28,7 @@ public class BibliotecaDao {
 	public void salvarEmprestimo(Livro livroE) {
 		
 	try {
-	    String sql = "INSERT INTO emprestimo (titulo, autor) VALUES (?,?)";
+	    String sql = "INSERT INTO emprestimo (id,titulo,autor,) VALUES (?,?)";
 	    PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
 	    stmt.setString(1, livroE.getTitulo());
 	    stmt.setString(2, livroE.getAutor());
@@ -83,11 +83,11 @@ public class BibliotecaDao {
 	}
 		}
 	 
-	 public Aluno buscarAlunoEmprestimo(String id) {
+	 public Aluno buscarAlunoEmprestimo(String idAluno) {
 
 	 try {
-		 java.sql.PreparedStatement stmt = connection.prepareStatement("SELECT * FROM alunos WHERE id = ?");
-		 stmt.setString(1, id);
+		 java.sql.PreparedStatement stmt = connection.prepareStatement("SELECT * FROM alunos WHERE idAluno = ?");
+		 stmt.setString(1, idAluno);
 		 ResultSet rsa = stmt.executeQuery();
 
 		 Aluno aluno = null;
@@ -150,7 +150,7 @@ public class BibliotecaDao {
 	 
 	 public void alterar(Livro livro) {
 				// TODO Auto-generated method stub
-	 String sql = "UPDATE livros SET titulo = ? , autor = ? , editora = ? , ano  = ? , quantidade = ? , imagem = ? WHERE id = ?";
+	 String sql = "UPDATE livros SET titulo = ? , autor = ? , editora = ? , ano  = ? , quantidade = ? , imagem = ? WHERE idLivro = ?";
 
 	 try {
          PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
@@ -160,7 +160,7 @@ public class BibliotecaDao {
 		 stmt.setString(4, livro.getAno());
 	     stmt.setInt(5, livro.getQuantidade());
 		 stmt.setString(6, livro.getImagem());
-		 stmt.setInt(7, livro.getId());
+		 stmt.setInt(7, livro.getidLivro());
 		 stmt.execute();
 		 stmt.close();
 			  
@@ -173,8 +173,8 @@ public class BibliotecaDao {
 	 public void remover(Livro livro) {
 			// TODO Auto-generated method stub
 	 try {
-	     PreparedStatement stmt = (PreparedStatement) connection.prepareStatement("DELETE FROM livros WHERE id = ?");
-		 stmt.setLong(1, livro.getId());
+	     PreparedStatement stmt = (PreparedStatement) connection.prepareStatement("DELETE FROM livros WHERE idLivro = ?");
+		 stmt.setLong(1, livro.getidLivro());
 		 stmt.execute();
 		 stmt.close();
 	} catch (SQLException e) {

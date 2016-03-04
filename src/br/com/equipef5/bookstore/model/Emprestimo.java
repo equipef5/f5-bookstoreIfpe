@@ -2,11 +2,24 @@ package br.com.equipef5.bookstore.model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Emprestimo {
-	String Aluno;
+	
+	private int id;
+	private String Aluno;
     private Livro Livro;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
 	Date dataEmprestimo;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
 	Date dataDevolucao;
+    
+    public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 	public String getAluno() {
 		return Aluno;

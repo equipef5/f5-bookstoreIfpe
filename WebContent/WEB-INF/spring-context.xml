@@ -24,5 +24,9 @@
   class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
   <property name="maxUploadSize" value="100000" />
  </bean>
+ 
+ <mvc:interceptors>
+		<bean class="br.com.equipef5.bookstore.util.AutorizadorInterceptor" />
+</mvc:interceptors>
     
 </beans>

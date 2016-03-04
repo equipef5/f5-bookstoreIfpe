@@ -1,4 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -35,7 +42,6 @@
 		<ul class="menudesce" role="menu">
 			<li><a href="exibirIncluirAdministrador">Cadastrar Novo</a></li>
 			<li><a href="exibirAlterarSenha">Trocar Senha</a></li>
-			<li><a href="#">Lista</a></li>
 			<li class="divider"></li>
 			<li><a href="logout">Logout</a></li>
 		</ul>
@@ -75,28 +81,33 @@
 	<div class="form-group col-lg-12">
 	
 	  <label>Nome Completo:</label>
-		 <input type="text" name="nome" class="form-control" placeholder="Nome Completo"">
+		 <input type="text" name="nome" class="form-control" placeholder="Nome Completo">
+		 <form:errors path="aluno.nome" cssStyle="color:red" /> <br />
 	</div>
 				
 	<div class="form-group col-lg-12">
 		<label>Cpf:</label>
-			<input type="text" name="cpf" class="form-control" placeholder="Cpf"">
+			<input type="text" name="cpf" class="form-control" placeholder="Cpf">
+			<form:errors path="aluno.cpf" cssStyle="color:red" /> <br />
 	</div>
 				
 				
     <div class="form-group col-lg-12">
 		<label>Telefone: </label>
 			<input type="text" name="telefone" class="form-control"   placeholder="Telefone">
+				<form:errors path="aluno.telefone" cssStyle="color:red" /> <br />
 	</div>
 				
 	<div class="form-group col-lg-12">
 	   <label >E-mail:</label>
 		  <input type="text" name="email" class="form-control" placeholder="E-mail" >
+		  	<form:errors path="aluno.email" cssStyle="color:red" /> <br />
 	</div>
 				
 	 <div class="form-group col-lg-12">
 		<label >Matricula: </label>
 			<input type="text" name="matricula" class="form-control" placeholder="Matrícula"  >
+				<form:errors path="aluno.matricula" cssStyle="color:red" /> <br />
 	</div>
 				
 	 <div class="form-group col-lg-12">

@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -21,10 +22,10 @@
          <img id="profile-img" class="profile-img-card" src="view/imagens/chave-com-cadeado.png" />
             <p id="profile-name" class="profile-name-card"></p>
             
-            <form class="form-signin" action="efetuarLogin">
+            <form class="form-signin" action="efetuarLogin" method="post">
                 <span id="reauth-email" class="reauth-email"></span>
-                <input type="text" name="login" class="form-control" placeholder="Login" required="required">
-                <input type="password" name="senha" class="form-control" placeholder="Senha" required="required">
+                <input type="text" name="login" class="form-control" value="${adm.login}"  placeholder="Login" required="required">
+                <input type="password" name="senha" class="form-control" value="${adm.senha}" placeholder="Senha" required="required">
                 <div id="remember" class="checkbox">
                 
                     <label>

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -37,7 +38,6 @@
 		<ul class="menudesce" role="menu">
 			<li><a href="exibirIncluirAdministrador">Cadastrar Novo</a></li>
 			<li><a href="exibirAlterarSenha">Trocar Senha</a></li>
-			<li><a href="#">Lista</a></li>
 			<li class="divider"></li>
 			<li><a href="logout">Logout</a></li>
 		</ul>
@@ -91,7 +91,7 @@
 				</div>
 				
 				<div align="center">
-						<a href="exibirGerenciarAluno?titulo=${LivroE.titulo}"><h5 style="color: #008B8B">BUSCAR DADOS DO ALUNO</h5></a>
+						<a href="exibirGerenciarAlunoE?titulo=${LivroE.titulo}"><h5 style="color: #008B8B">BUSCAR DADOS DO ALUNO</h5></a>
 					</div>
 				
 								<div class="form-group col-lg-12">
@@ -102,6 +102,14 @@
 								<div class="form-group col-lg-12">
 					<label >E-mail:</label>
 					<input type="text" name="email" class="form-control" value="${dadosA.email}">
+				</div>
+				<div class="form-group col-lg-12">
+					<label >Data de Empréstimo</label>
+					<input type="text" name="dataEmprestimo" class="form-control" value="<fmt:formatDate value="${dataEmprestimo}" pattern="dd/MM/yyyy" />" >
+				</div>
+				<div class="form-group col-lg-12">
+					<label >Data de Devolução:</label>
+					<input type="text" name="dataDevolucao" class="form-control"  value="<fmt:formatDate value="${dataDevolucao}" pattern="dd/MM/yyyy" />">
 				</div>
 				
 				 <div class="form-group col-lg-12">
