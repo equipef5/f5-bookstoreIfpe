@@ -1,0 +1,64 @@
+create DATABASE  biblioteca;
+
+  create TABLE  administrador (
+   id INT NOT NULL  AUTO_INCREMENT PRIMARY KEY,
+   nome VARCHAR (50) NOT NULL, 
+   login VARCHAR(30) NOT NULL,  
+   senha VARCHAR(14) NOT NULL  
+ );
+ 
+   INSERT INTO administrador  (nome, login, senha)  
+   VALUES ('Administrador', 'Admin', 'admin');
+   
+
+create TABLE professor (
+
+ idProfessor INT NOT NULL  AUTO_INCREMENT PRIMARY KEY,
+ codigo VARCHAR (14) NOT NULL,
+ nome VARCHAR(50) NOT NULL,
+ email VARCHAR (50) NOT NULL );
+ 
+
+create TABLE  livros (
+
+    id INT NOT NULL  AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(50) NOT NULL,  
+    autor VARCHAR(50) NOT NULL,
+    editora VARCHAR(30) NOT NULL,
+    ano VARCHAR (6) NOT NULL, 
+    quantidade int NOT NULL,
+    imagem VARCHAR (48541651521) NOT NULL
+    
+ ); 
+ 
+ create TABLE  alunos (
+   
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(50) NOT NULL,  
+    cpf VARCHAR(14) NOT NULL  ,
+    telefone VARCHAR(20) NOT NULL,
+    email VARCHAR (50) NOT NULL,  
+    matricula VARCHAR(8) NOT NULL    
+ 
+ );
+ 
+  create table emprestimo(
+  
+	 id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	 dt_emprestimo date NOT NULL,
+	 dt_devolucao date  NOT NULL 
+	 
+ );
+ 
+ 
+ALTER TABLE emprestimo ADD COLUMN livros_id int;
+ALTER TABLE emprestimo ADD CONSTRAINT fk_livros FOREIGN KEY
+(livros_id) REFERENCES livros(id)
+
+
+ALTER TABLE emprestimo ADD COLUMN alunos_id int;
+ALTER TABLE emprestimo ADD CONSTRAINT fk_alunos FOREIGN KEY
+(alunos_id) REFERENCES alunos(id)
+
+
+ALTER TABLE emprestimo ADD STATUS varchar(9) DEFAULT'ativo'

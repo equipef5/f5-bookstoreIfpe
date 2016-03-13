@@ -10,23 +10,36 @@
 		http://www.springframework.org/schema/context
 		http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-<mvc:default-servlet-handler/>
+ <mvc:default-servlet-handler/>
 
-<context:component-scan base-package="br.com.equipef5.bookstore" />
-<mvc:annotation-driven />
+  <context:component-scan base-package="br.com.equipef5.library" />
 
-<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-	<property name="prefix" value="/view/" />
-	<property name="suffix" value=".jsp" />
-</bean>
+   <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	 <property name="prefix" value="/view/" />
+	 <property name="suffix" value=".jsp" />
+  </bean>
 
   <bean id="multipartResolver"
-  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-  <property name="maxUploadSize" value="100000" />
+    class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <property name="maxUploadSize" value="1000000000000" />
  </bean>
  
+ <mvc:annotation-driven conversion-service="conversionService" />
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+ <property name="converters">
+ 
+  <list>
+	<bean class="br.com.equipef5.library.controller.AlunoConverter" />
+	<bean class="br.com.equipef5.library.controller.LivroConverter" />
+  </list>
+ </property>
+</bean>
+
  <mvc:interceptors>
-		<bean class="br.com.equipef5.bookstore.util.AutorizadorInterceptor" />
-</mvc:interceptors>
-    
+    <bean class="br.com.equipef5.library.util.AutorizadorInterceptor"/> 
+ </mvc:interceptors>
+
+
+
+
 </beans>

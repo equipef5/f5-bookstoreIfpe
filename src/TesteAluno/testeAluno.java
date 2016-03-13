@@ -9,8 +9,8 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import br.com.equipef5.bookstore.Dao.AlunoDao;
-import br.com.equipef5.bookstore.model.Aluno;
+import br.com.equipef5.library.Dao.AlunoDao;
+import br.com.equipef5.library.model.Aluno;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class testeAluno {

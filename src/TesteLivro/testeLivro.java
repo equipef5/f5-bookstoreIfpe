@@ -7,8 +7,8 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import br.com.equipef5.bookstore.Dao.LivroDao;
-import br.com.equipef5.bookstore.model.Livro;
+import br.com.equipef5.library.Dao.LivroDao;
+import br.com.equipef5.library.model.Livro;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class testeLivro {

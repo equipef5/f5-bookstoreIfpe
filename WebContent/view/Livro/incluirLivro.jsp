@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -19,7 +17,7 @@
 </head>
 <body>
 
-
+  <!-- Title -->
 	<nav class="navbar navbar-default">
 	<div style="float: right"> </br> </br>
     </div>
@@ -28,7 +26,7 @@
 	<div class="navbar-header">
 			
 	  <img align="left" src="view/imagens/IFPE_imagem.png" style="width: 380; height: 105px;">
-	    <h3 align="right" style="font-family: arial black; font-size: x-larger">BOOKSTORE </h3>
+	    <h3 align="right" style="font-family: arial black; font-size: x-larger"> Library </h3>
 	</div>
 
     <div style="float: right; margin-right: 20px;">
@@ -46,21 +44,36 @@
 	</div>
 	</div>
 	</nav>
-		<!-- end  -->
+	<!-- end  -->
+	<div style= "margin-left: 95%" >
+	     <p>
+	       <a href="exibirHome"> <button type="button"  class="btn btn-default btn-round"> <b> voltar </b> </button> </a>
+		</p>	
+	</div>
+  
 	<!-- Menu -->
 
 	<div class="col-md-3 sidenav ">
-	  <ul class="nav navbar nav-stacked">
+		<ul class="nav navbar nav-stacked">
 
-		<li class="ativo"><a href="exibirBiblioteca"><span class="glyphicon glyphicon-chevron-right "></span>Biblioteca</a></li>
+			<li class="ativo"><a href="exibirBiblioteca"><span
+					class="glyphicon glyphicon-chevron-right "></span>Biblioteca</a></li>
 
-		<li class="ativo2"><a href="exibirCadastrarLivro"><span class="glyphicon glyphicon-chevron-right "></span>Cadastrar livro</a></li>
+			<li class="ativo2"><a href="exibirCadastrarLivro"><span
+					class="glyphicon glyphicon-chevron-right "></span>Cadastrar Livro</a></li>
 
-	    <li class="ativo2"><a href="exibirCadastrarAluno" class="active2"><span class="glyphicon glyphicon-chevron-right "></span>Cadastrar aluno</a></li>
+			<li class="ativo2"><a href="exibirCadastrarAluno"
+				class="active2"><span class="glyphicon glyphicon-chevron-right "></span>Cadastrar Usuário</a></li>
 
-		<li class="ativo2"><a href="exibirGerenciarLivro"><span class="glyphicon glyphicon-chevron-right "></span> Gerenciar livro</a></li>
+			<li class="ativo2"><a href="exibirGerenciarLivro"><span
+					class="glyphicon glyphicon-chevron-right "></span> Gerenciar Livros</a></li>
 
-		<li class="ativo2"><a href="exibirGerenciarAluno"><span class="glyphicon glyphicon-chevron-right "></span>Gerenciar aluno</a></li>
+			<li class="ativo2"><a href="exibirGerenciarAluno"><span
+					class="glyphicon glyphicon-chevron-right "></span>Gerenciar Usuários</a></li>
+					
+		      <li class="ativo2"><a href="exibirListaEmprestimo"><span
+					class="glyphicon glyphicon-chevron-right "></span>Gerenciar Empréstimos</a></li>
+					
 
 		</ul>
 	</div>
@@ -77,46 +90,41 @@
     <form role="form" action="incluirLivro" method="post" enctype="multipart/form-data">
     
 	<div class="form-group col-lg-12">
-	     <input type="hidden" name="id" size="50px" >
+	     
 	  <label>Título:</label>
-		 <input type="text" name="titulo" class="form-control"  placeholder="Título do Livro"> 
-		 <form:errors path="livro.titulo" cssStyle="color:red" /> <br />
+		 <input type="text" name="titulo" class="form-control"  placeholder="Título do Livro" required="required">
 	</div>
 				
 	<div class="form-group col-lg-12">
 		<label>Autor:</label>
-			<input type="text" name="autor" class="form-control" placeholder="Autor">
-			 <form:errors path="livro.autor" cssStyle="color:red" /> <br />
+			<input type="text" name="autor" class="form-control" placeholder="Autor" required="required">
 	</div>
 				
 				
     <div class="form-group col-lg-12">
 		<label>Editora:</label>
-			<input type="text" name="editora" class="form-control"  placeholder="Editora">
-			 <form:errors path="livro.editora" cssStyle="color:red" /> <br />
+			<input type="text" name="editora" class="form-control"  placeholder="Editora" required="required">
 	</div>
 				
 	<div class="form-group col-lg-12">
 	   <label >Ano de Lançamento:</label>
-		  <input type="text" name="ano" class="form-control"  placeholder="Ano de Lançamento" >
-		   <form:errors path="livro.ano" cssStyle="color:red" /> <br />
+		  <input type="text" name="ano" class="form-control"  placeholder="Ano de Lançamento" required="required" >
 	</div>
 				
 	 <div class="form-group col-lg-12">
 		<label >Quantidade de Livro: </label>
-			<input type="number" name="quantidade" class="form-control" placeholder="Quantidade de Livro"  >
-			 <form:errors path="livro.quantidade" cssStyle="color:red" /> <br />
+			<input type="text" name="quantidade" class="form-control" placeholder="Quantidade de Livro"  required="required" >
 	</div>
 	
 	 <div class="form-group col-lg-12">
 	   <b> Imagem: </b> <br>
-	      <input type = "file" name = "file" size="50" placeholder="Imagem" > <br> <br>
-	  
+	      <input type="file" name="file" size="50" placeholder="Imagem" > <br> <br>
+	       <form:errors path="aluno.file" cssStyle="color:red" /> <br />
 	 </div>
 				
 	 <div class="form-group col-lg-12">
 	 <div align="center" >
-		 <button class="btn btn-success "type="submit" onclick="alert('Livro Cadastrado com Sucesso!')"> <i class="glyphicon glyphicon-ok"></i> Confirmar </button> &nbsp;&nbsp;
+		 <button class="btn btn-success "type="submit" "> <i class="glyphicon glyphicon-ok"></i> Salvar </button> &nbsp;&nbsp;
 		 
 		 <button type="reset" class="btn btn-success "> <i class="glyphicon glyphicon-erase"></i>Limpar</button>
 	</div>
