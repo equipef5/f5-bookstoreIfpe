@@ -66,7 +66,7 @@ public class LivroController {
     
     @RequestMapping("alterarLivro")
     public String alterarLivro(Livro livro, Model model) {
-
+    	
    	LivroDao dao = new LivroDao();
 	dao.alterar(livro);
 	model.addAttribute("Livro", livro);

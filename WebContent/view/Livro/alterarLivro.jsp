@@ -1,17 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"  pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link href="view/css/bootstrap.min.css" rel="stylesheet" media="screen">
-<link href="view/css/buscar.css" rel="stylesheet" media="screen">
-<script src="view/js/jquery-latest.js"></script>
-<script src="view/js/bootstrap.min.js"></script>
-
+	<link rel="stylesheet" type="text/css" href="view/css/buscar.css">
+	<link rel="stylesheet" type="text/css" href="view/css/menu.css">
+	<link rel="stylesheet" type="text/css" href="view/css/footer.css">
+	<link href="view/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<script src="view/js/jquery-latest.js"></script>
+	<script src="view/js/bootstrap.min.js"></script>
+	<script src="view/js/jquery.min.js"></script>
+	<script src="view/js/table.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Alterar Dados do Livro</title>
+<title>Alterar Livro</title>
 </head>
 <body>
-	<!-- Title -->
+
+  <!-- Title -->
 	<nav class="navbar navbar-default">
 	<div style="float: right"> </br> </br>
     </div>
@@ -38,14 +44,13 @@
 	</div>
 	</div>
 	</nav>
-		<!-- end  -->	
-		
-    <div style= "margin-left: 95%" >
+	<!-- end  -->
+	<div style= "margin-left: 95%" >
 	     <p>
-	       <a href="exibirHome"> <button type="button" id="botao2" class="btn btn-default btn-round"> <b> voltar </b> </button> </a>
+	       <a href="exibirHome"> <button type="button"  class="btn btn-default btn-round"> <b> voltar </b> </button> </a>
 		</p>	
-	</div>	
-	
+	</div>
+  
 	<!-- Menu -->
 
 	<div class="col-md-3 sidenav ">
@@ -74,60 +79,70 @@
 	</div>
 	
 	<!-- end -->
+      <!-- Form -->
+      
+	<div style="margin-left: 40%">
+	<div class="container-page">				
+	<div class="col-md-9 ">
 	
-   <div align="center">
-	
-	<h3>Alterar Dados do Livro</h3>
-	
-  <form action="alterarLivro" method="post" enctype="multipart/form-data">
-	
-	  <div class="form-group col-lg-12">
-	     <input type="hidden" name="id" size="50px" value="${LivroL.idLivro}">
+	  <h2 class="dark-grey" align="center"> <b><i> Alterar dados do Livro </i></b></h2>  <br> <br>
+				  
+    <form role="form" action="alterarLivro" method="post" enctype="multipart/form-data">
+    
+     <input type="hidden" name="idLivro" size="50px" value="${LivroL.idLivro}">
+    
+	<div class="form-group col-lg-12">
 	     
 	  <label>Título:</label>
-		 <input type="text" name="titulo" class="form-control" value="${LivroL.titulo}" placeholder="Título do Livro">
+		 <input type="text" name="titulo" class="form-control"  value="${LivroL.titulo}"  placeholder="Título do Livro" required="required">
 	</div>
 				
 	<div class="form-group col-lg-12">
 		<label>Autor:</label>
-			<input type="text" name="autor" class="form-control"  value="${LivroL.autor}" placeholder="Autor">
+			<input type="text" name="autor" class="form-control" value="${LivroL.autor}" placeholder="Autor" required="required">
 	</div>
 				
 				
     <div class="form-group col-lg-12">
 		<label>Editora:</label>
-			<input type="text" name="editora" class="form-control"   value="${LivroL.editora}" placeholder="Editora">
+			<input type="text" name="editora" class="form-control"  value="${LivroL.editora}" placeholder="Editora" required="required">
 	</div>
 				
 	<div class="form-group col-lg-12">
 	   <label >Ano de Lançamento:</label>
-		  <input type="text" name="ano" class="form-control" value="${LivroL.ano}" placeholder="Ano de Lançamento" >
+		  <input type="text" name="ano" class="form-control"  value="${LivroL.ano}" placeholder="Ano de Lançamento" required="required" >
 	</div>
 				
 	 <div class="form-group col-lg-12">
 		<label >Quantidade de Livro: </label>
-			<input type="number" name="quantidade" class="form-control" value="${LivroL.quantidade} " placeholder="Quantidade de Livro"  >
+			<input type="text" name="quantidade" class="form-control" value="${LivroL.quantidade}" placeholder="Quantidade de Livro"  required="required" >
 	</div>
 	
 	 <div class="form-group col-lg-12">
-		<label >Imagem: </label>
-		  <input type="file" name="file" class="form-control"  value="${LivroL.imagem} " >
-	</div>
+	   <b> Imagem: </b> <br>
+	      <input type="file" name="file" size="50" value="${LivroL.imagem}" placeholder="Imagem" > <br> <br>
+	 </div>
 				
 	 <div class="form-group col-lg-12">
 	 <div align="center" >
-		 <button class="btn btn-success "type="submit"> <i class="glyphicon glyphicon-ok"></i> Alterar </button> &nbsp;&nbsp;
+		 <button class="btn btn-success" type="submit" > <i class="glyphicon glyphicon-ok"></i> Salvar </button> &nbsp;&nbsp;
 		 
 		 <button type="reset" class="btn btn-success "> <i class="glyphicon glyphicon-erase"></i>Limpar</button>
 	</div>
 	</div>	
 	</form>
 	</div>
-		
+    </div>
+	</div>	
+ 
+  <!-- end -->
+ <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+
 <!-- rodapé -->
      <footer id="footer" >
         <p align="center"> BookstoreIfpe por EquipeF5 </p>
      </footer>
 <!-- end -->
+
 </body>
 </html>
